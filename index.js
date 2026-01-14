@@ -22,7 +22,9 @@ const LINE_CHANNEL_SECRET = process.env.LINE_CHANNEL_SECRET;
 const LINE_CHANNEL_ACCESS_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
 if (!LINE_CHANNEL_SECRET || !LINE_CHANNEL_ACCESS_TOKEN) {
-  console.error("Missing LINE env vars. Please set LINE_CHANNEL_SECRET and LINE_CHANNEL_ACCESS_TOKEN");
+  console.error(
+    "Missing LINE env vars. Please set LINE_CHANNEL_SECRET and LINE_CHANNEL_ACCESS_TOKEN"
+  );
 }
 
 const config = {
@@ -35,6 +37,12 @@ const client = new line.Client(config);
 // Supabase (service role)
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+  console.error(
+    "Missing Supabase env vars. Please set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY"
+  );
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -53,18 +61,40 @@ function flexMessage(altText, bubbleJson) {
   };
 }
 
-// แก้ชื่อไฟล์ให้ตรงกับที่คุณมีจริง
+// IMPORTANT: ชื่อไฟล์ต้องตรงจริงในโปรเจกต์
+// (กันพลาด) ถ้าเคยตั้งชื่อไฟล์ไม่เหมือนกัน ให้ระบบลองชื่อสำรองให้ด้วย
+function loadJsonWithFallback(primaryRelPath, fallbackRelPaths = []) {
+  try {
+    return loadJson(primaryRelPath);
+  } catch (e1) {
+    for (const rel of fallbackRelPaths) {
+      try {
+        return loadJson(rel);
+      } catch (e2) {
+        // try next
+      }
+    }
+    throw e1;
+  }
+}
+
+// IMPORTANT: ชื่อไฟล์ต้องตรงจริงในโปรเจกต์
 const FLEX = {
-  wedding: () => loadJson("flex/bubbles/event_details.json"),
-  travel: () => loadJson("flex/bubbles/travel.json"),
-  blessing: () => loadJson("flex/bubbles/blessing.json"),
-  confirm: () => loadJson("flex/bubbles/confirm.json"),
+  // event_details.json เคยใช้มาก่อน เลยใส่ fallback กันเงียบ
+  wedding: () =>
+    loadJsonWithFallback("flex/bubbles/wedding_details.json", [
+      "flex/bubbles/event_details.json",
+    ]),
+  travel: () => loadJsonWithFallback("flex/bubbles/travel.json"),
+  blessing: () => loadJsonWithFallback("flex/bubbles/blessing.json"),
+  confirm: () => loadJsonWithFallback("flex/bubbles/confirm.json"),
+  gift: () => loadJsonWithFallback("flex/bubbles/gift.json"),
 };
 
-// ========== In-memory session (คุยถามชื่อ/จำนวน/อวยพร) ==========
+// ========== In-memory session ==========
 /**
  * sessions Map:
- * userId -> { step: "ASK_NAME"|"ASK_COUNT"|"ASK_BLESSING", temp: {...} }
+ * userId -> { step: "ASK_NAME"|"ASK_COUNT"|"ASK_BLESSING"|"ASK_GIFT_SLIP", temp: {...} }
  */
 const sessions = new Map();
 
@@ -154,8 +184,7 @@ function normalizeText(t) {
 }
 
 function isNumberLike(text) {
-  // รับทั้ง "2", "2คน", "2 คน", "สอง" (ไม่รองรับคำไทยแบบหนึ่งสองในเวอร์ชันนี้)
-  const m = text.match(/\d+/);
+  const m = (text || "").match(/\d+/);
   if (!m) return null;
   const n = parseInt(m[0], 10);
   if (Number.isNaN(n)) return null;
@@ -163,13 +192,9 @@ function isNumberLike(text) {
 }
 
 async function handleEvent(event) {
-  // สนใจเฉพาะข้อความ
-  if (event.type !== "message" || event.message.type !== "text") return;
+  if (event.type !== "message") return;
 
   const userId = event.source && event.source.userId;
-  const text = normalizeText(event.message.text);
-
-  // ถ้าไม่มี userId (บางกรณีในบาง source) ให้ตอบแบบเบาๆ
   if (!userId) {
     return client.replyMessage(event.replyToken, {
       type: "text",
@@ -177,8 +202,40 @@ async function handleEvent(event) {
     });
   }
 
+  const msgType = event.message.type; // "text" | "image" | "file" | ...
+  const text = msgType === "text" ? normalizeText(event.message.text) : "";
+
   // ===== 1) ถ้ามี session ค้างอยู่ ให้ทำตาม step ก่อน =====
   const sess = sessions.get(userId);
+
+  // --- โหมดรอรับสลิป (ของขวัญ) ---
+  if (sess && sess.step === "ASK_GIFT_SLIP") {
+    if (msgType === "image" || msgType === "file") {
+      sessions.delete(userId);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text:
+          "ขอบคุณสำหรับของขวัญมาก ๆ นะคะ 🤍\n" +
+          "ทางเรารับสลิปเรียบร้อยแล้วค่ะ\n\n" +
+          "พระเจ้าอวยพรนะคะ",
+      });
+    }
+
+    // ถ้าส่งเป็นข้อความมาแทน
+    if (msgType === "text") {
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "แนบสลิปเป็น “รูปภาพ” หรือ “ไฟล์” ได้เลยนะคะ 🤍",
+      });
+    }
+
+    return; // message type อื่น ๆ ปล่อยผ่าน
+  }
+
+  // ถ้าไม่ใช่ข้อความ และไม่ได้อยู่ในโหมดรอรับสลิป -> ไม่ต้องตอบ
+  if (msgType !== "text") return;
+
+  // --- โหมดเก็บ RSVP / Blessing ---
   if (sess) {
     // ASK_NAME
     if (sess.step === "ASK_NAME") {
@@ -189,13 +246,14 @@ async function handleEvent(event) {
           text: "ขอชื่อ-นามสกุลอีกครั้งได้ไหมคะ (เช่น Natara Thawattara)",
         });
       }
+
       sess.temp.fullName = fullName;
       sess.step = "ASK_COUNT";
       sessions.set(userId, sess);
 
       return client.replyMessage(event.replyToken, {
         type: "text",
-        text: "มาทั้งหมดกี่คนคะ? (รวมตัวเอง) เช่น 1, 2, 3  [ และหากยังไม่แน่ใจ ลงทะเบียนจำนวนไปก่อน และสามารถแก้ไขจำนวนทีหลัง ได้จากการพิมพ์ ‘แก้ไขการยืนยัน’]",
+        text: "มาทั้งหมดกี่คนคะ? (รวมตัวเอง) เช่น 1, 2, 3",
       });
     }
 
@@ -205,7 +263,7 @@ async function handleEvent(event) {
       if (!n || n < 1 || n > 50) {
         return client.replyMessage(event.replyToken, {
           type: "text",
-          text: "รบกวนพิมพ์เป็นตัวเลขนะคะ (รวมตัวเอง) เช่น 1,2",
+          text: "รบกวนพิมพ์เป็นตัวเลข 1–50 นะคะ (รวมตัวเอง) เช่น 2",
         });
       }
 
@@ -221,7 +279,8 @@ async function handleEvent(event) {
           `พิมพ์ดูข้อมูลได้เลย:\n` +
           `- รายละเอียดงาน\n` +
           `- การเดินทาง\n` +
-          `- คำอวยพร`,
+          `- คำอวยพร\n` +
+          `- ของขวัญ`,
       });
     }
 
@@ -240,35 +299,59 @@ async function handleEvent(event) {
 
       return client.replyMessage(event.replyToken, {
         type: "text",
-        text:
-          "รับคำอวยพรเรียบร้อยแล้วค่ะ 🥺🤍\nขอบคุณมากจริง ๆ นะคะ\n\n" +
-          "พระเจ้าอวยพรนะคะ",
+        text: "รับคำอวยพรเรียบร้อยแล้วค่ะ 🥺🤍\nขอบคุณมากจริง ๆ นะคะ\n\nพระเจ้าอวยพรนะคะ",
       });
     }
   }
 
-  // ===== 2) คำสั่งหลัก =====
+  // ===== 2) คำสั่งหลัก (ข้อความ) =====
 
   // รายละเอียดงาน
- if (text === "รายละเอียดงาน") {
-    const bubble = FLEX.wedding();
-    return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงาน", bubble));
+  if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
+    try {
+      const bubble = FLEX.wedding();
+      return client.replyMessage(
+        event.replyToken,
+        flexMessage("รายละเอียดงานแต่งงาน", bubble)
+      );
+    } catch (e) {
+      console.error("Flex wedding load error:", e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดรายละเอียดงานไม่ได้ (ไฟล์ Flex อาจยังไม่ถูกต้อง) 🙏",
+      });
+    }
   }
-
 
   // การเดินทาง
   if (text === "การเดินทาง" || text.toLowerCase() === "travel") {
-    const bubble = FLEX.travel();
-    return client.replyMessage(event.replyToken, flexMessage("การเดินทาง", bubble));
+    try {
+      const bubble = FLEX.travel();
+      return client.replyMessage(event.replyToken, flexMessage("การเดินทาง", bubble));
+    } catch (e) {
+      console.error("Flex travel load error:", e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดการเดินทางไม่ได้ 🙏",
+      });
+    }
   }
 
   // คำอวยพร (โชว์การ์ด)
   if (text === "คำอวยพร") {
-    const bubble = FLEX.blessing();
-    return client.replyMessage(event.replyToken, flexMessage("ฝากคำอวยพร", bubble));
+    try {
+      const bubble = FLEX.blessing();
+      return client.replyMessage(event.replyToken, flexMessage("ฝากคำอวยพร", bubble));
+    } catch (e) {
+      console.error("Flex blessing load error:", e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดการ์ดคำอวยพรไม่ได้ 🙏",
+      });
+    }
   }
 
-  // กดปุ่ม "อวยพร" ในการ์ด -> เริ่มรับข้อความอวยพร
+  // กดปุ่ม "อวยพร"
   if (text === "อวยพร") {
     sessions.set(userId, { step: "ASK_BLESSING", temp: {} });
     return client.replyMessage(event.replyToken, {
@@ -278,12 +361,20 @@ async function handleEvent(event) {
   }
 
   // ยืนยันมาร่วมงาน (โชว์การ์ด)
-  if (text === "ยืนยันมาร่วมงาน" || text === "rsvp" || text.toLowerCase() === "rsvp") {
-    const bubble = FLEX.confirm();
-    return client.replyMessage(event.replyToken, flexMessage("ยืนยันมาร่วมงาน", bubble));
+  if (text === "ยืนยันมาร่วมงาน" || text.toLowerCase() === "rsvp") {
+    try {
+      const bubble = FLEX.confirm();
+      return client.replyMessage(event.replyToken, flexMessage("ยืนยันมาร่วมงาน", bubble));
+    } catch (e) {
+      console.error("Flex confirm load error:", e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดการ์ดยืนยันมาร่วมงานไม่ได้ 🙏",
+      });
+    }
   }
 
-  // เริ่ม flow RSVP (จากปุ่มในการ์ด)
+  // เริ่ม flow RSVP (จากปุ่ม)
   if (text === "ยืนยัน เจอกันแน่นอน" || text === "ยืนยันเจอกันแน่นอน") {
     const existing = await getRsvp(userId);
     if (existing) {
@@ -313,7 +404,41 @@ async function handleEvent(event) {
     });
   }
 
-  // help เบา ๆ
+  // ของขวัญ (โชว์การ์ด QR)
+  if (text === "ของขวัญ" || text.toLowerCase() === "gift") {
+    try {
+      const bubble = FLEX.gift();
+      return client.replyMessage(event.replyToken, flexMessage("ของขวัญ", bubble));
+    } catch (e) {
+      console.error("Flex gift load error:", e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดการ์ดของขวัญไม่ได้ 🙏",
+      });
+    }
+  }
+
+  // กดปุ่มแนบสลิป (มาจาก gift.json)
+  // NOTE: รองรับหลายข้อความ เพราะบางคนตั้ง label/uri ต่างกัน เช่น "แนบ Payslip"
+  const tLower = text.toLowerCase();
+  const isPaySlipTrigger =
+    text === "แนบสลิป / Pay Slip" ||
+    text === "แนบ Payslip" ||
+    text === "แนบ payslip" ||
+    text === "แนบสลิป" ||
+    tLower === "pay slip" ||
+    tLower === "payslip" ||
+    (tLower.includes("แนบ") && (tLower.includes("slip") || tLower.includes("payslip")));
+
+  if (isPaySlipTrigger) {
+    sessions.set(userId, { step: "ASK_GIFT_SLIP", temp: {} });
+    return client.replyMessage(event.replyToken, {
+      type: "text",
+      text: "ได้เลยค่ะ 🤍 แนบสลิปเป็นรูปภาพหรือไฟล์เข้ามาในแชทนี้ได้เลยนะคะ",
+    });
+  }
+
+  // help
   if (text === "help" || text === "ช่วยเหลือ" || text === "เมนู") {
     return client.replyMessage(event.replyToken, {
       type: "text",
@@ -322,32 +447,17 @@ async function handleEvent(event) {
         "- รายละเอียดงาน\n" +
         "- การเดินทาง\n" +
         "- ยืนยันมาร่วมงาน\n" +
-        "- คำอวยพร",
+        "- คำอวยพร\n" +
+        "- ของขวัญ",
     });
   }
 
-  // ไม่ match อะไร -> ไม่ตอบก็ได้ หรือจะตอบเบา ๆ
+  // fallback
   return client.replyMessage(event.replyToken, {
     type: "text",
     text: "พิมพ์ “เมนู” เพื่อดูคำสั่งทั้งหมดได้นะคะ 🤍",
   });
 }
-
-// ของขวัญ
-if (text === "ของขวัญ" || text.toLowerCase() === "gift") {
-  const bubble = FLEX.gift();
-  return client.replyMessage(event.replyToken, flexMessage("ของขวัญ", bubble));
-}
-
-// กดปุ่มแนบสลิป
-if (text === "แนบสลิป / Pay Slip") {
-  sessions.set(userId, { step: "ASK_GIFT_SLIP", temp: {} });
-  return client.replyMessage(event.replyToken, {
-    type: "text",
-    text: "ได้เลยค่ะ 🤍 แนบสลิปเป็นรูปภาพหรือไฟล์เข้ามาในแชทนี้ได้เลยนะคะ",
-  });
-}
-
 
 // Start server
 const PORT = process.env.PORT || 3000;
