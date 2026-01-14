@@ -98,7 +98,7 @@
           {
             "type": "text",
             "text": "รถส่วนตัว",
-            "gravity": "center",
+            "gravity": "top",
             "weight": "bold",
             "size": "sm"
           },
@@ -110,7 +110,6 @@
             "wrap": true
           }
         ],
-        "cornerRadius": "30px",
         "flex": 2
       },
       {
@@ -203,7 +202,7 @@
               {
                 "type": "text",
                 "text": "หรือรถไฟฟ้า BTS",
-                "gravity": "center",
+                "gravity": "top",
                 "weight": "bold",
                 "size": "sm"
               },
@@ -215,7 +214,6 @@
                 "wrap": true
               }
             ],
-            "cornerRadius": "30px",
             "flex": 2
           },
           {
