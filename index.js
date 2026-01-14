@@ -250,37 +250,10 @@ async function handleEvent(event) {
   // ===== 2) คำสั่งหลัก =====
 
   // รายละเอียดงาน
- //if (text === "รายละเอียดงาน") {
-   // const bubble = FLEX.wedding();
-    //return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงาน", bubble));
-  //}
-
-  if (text === "รายละเอียดงาน") {
-  return client.replyMessage(event.replyToken, {
-    type: "flex",
-    altText: "รายละเอียดงานแต่งงาน",
-    contents: {
-      type: "bubble",
-      body: {
-        type: "box",
-        layout: "vertical",
-        contents: [
-          {
-            type: "text",
-            text: "รายละเอียดงานแต่งงาน",
-            weight: "bold",
-            size: "lg",
-          },
-          {
-            type: "text",
-            text: "ถ้าคุณเห็นอันนี้ แปลว่าโค้ดและ webhook ถูกต้อง ✅",
-            wrap: true,
-          },
-        ],
-      },
-    },
-  });
-}
+ if (text === "รายละเอียดงาน") {
+    const bubble = FLEX.wedding();
+    return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงาน", bubble));
+  }
 
 
   // การเดินทาง
