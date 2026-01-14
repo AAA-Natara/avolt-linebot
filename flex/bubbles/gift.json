@@ -30,8 +30,7 @@
         "weight": "regular",
         "gravity": "center",
         "color": "#ffffff"
-      },
-      
+      }
     ],
     "backgroundColor": "#7a2f30",
     "spacing": "md"
