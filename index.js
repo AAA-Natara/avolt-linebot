@@ -252,7 +252,7 @@ async function handleEvent(event) {
   // รายละเอียดงาน
   if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
     const bubble = FLEX.wedding();
-    return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงานแต่งงาน", bubble));
+    return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงาน", bubble));
   }
 
   // การเดินทาง
