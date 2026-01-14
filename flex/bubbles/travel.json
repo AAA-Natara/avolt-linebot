@@ -1,0 +1,270 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "การเดินทาง",
+            "color": "#ffffff",
+            "size": "xl",
+            "flex": 4,
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "Venue & Travel",
+            "color": "#ffffff",
+            "size": "xl",
+            "flex": 4,
+            "weight": "bold"
+          }
+        ]
+      }
+    ],
+    "paddingAll": "20px",
+    "backgroundColor": "#7A1E3A",
+    "spacing": "md",
+    "height": "110px",
+    "paddingTop": "22px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "คริสตจักรสดุดี ",
+            "size": "xl",
+            "flex": 4,
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "Praise Church Bangkok",
+            "size": "xl",
+            "flex": 4,
+            "weight": "bold"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "VOW Ceremony",
+        "weight": "bold",
+        "color": "#7A1E3A"
+      },
+      {
+        "type": "text",
+        "text": "งานเริ่ม 13:00 น.",
+        "color": "#b7b7b7",
+        "size": "xs"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "รถไฟฟ้า BTS",
+            "gravity": "center",
+            "weight": "bold",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "อุดมสุข / Udomsuk",
+            "gravity": "center",
+            "size": "sm"
+          }
+        ],
+        "spacing": "lg",
+        "cornerRadius": "30px",
+        "margin": "xl",
+        "flex": 2
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "รถส่วนตัว",
+            "gravity": "center",
+            "weight": "bold",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "จอดรถที่ลานจอดในซอย สุขุมวิท 101/2",
+            "gravity": "center",
+            "size": "sm",
+            "wrap": true
+          }
+        ],
+        "spacing": "lg",
+        "cornerRadius": "30px",
+        "margin": "xl",
+        "flex": 2
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ค่าที่จอดรถ",
+            "gravity": "center",
+            "weight": "bold",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "30 บาท",
+            "gravity": "center",
+            "size": "sm",
+            "wrap": true
+          }
+        ],
+        "spacing": "lg",
+        "cornerRadius": "30px",
+        "margin": "xl",
+        "flex": 2
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "แผนที่",
+          "uri": "https://maps.app.goo.gl/ecKm5HQPdBHAQx4R7"
+        },
+        "style": "primary",
+        "margin": "30px",
+        "color": "#7A1E3A"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Cloud 11",
+                "size": "xl",
+                "flex": 4,
+                "weight": "bold"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Celebration",
+            "weight": "bold",
+            "color": "#7A1E3A"
+          },
+          {
+            "type": "text",
+            "text": "งานเริ่ม 19:00 น.",
+            "color": "#b7b7b7",
+            "size": "xs"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "รถไฟฟ้า BTS",
+                "gravity": "center",
+                "weight": "bold",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "อุดมสุข / Udomsuk",
+                "gravity": "center",
+                "size": "sm"
+              }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px",
+            "margin": "xl",
+            "flex": 2
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "หรือรถไฟฟ้า BTS",
+                "gravity": "center",
+                "weight": "bold",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "ปุณณวิถี / Punnawithi",
+                "gravity": "center",
+                "size": "sm"
+              }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px",
+            "margin": "xl",
+            "flex": 2
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "รถส่วนตัว",
+                "gravity": "center",
+                "weight": "bold",
+                "size": "sm"
+              },
+              {
+                "type": "text",
+                "text": "จอดที่ Cloud 11",
+                "gravity": "center",
+                "size": "sm",
+                "wrap": true
+              }
+            ],
+            "spacing": "lg",
+            "cornerRadius": "30px",
+            "margin": "xl",
+            "flex": 2
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "แผนที่",
+              "uri": "https://maps.app.goo.gl/nmmQEBFqFRkfU9db7"
+            },
+            "style": "primary",
+            "margin": "30px",
+            "color": "#7A1E3A"
+          }
+        ],
+        "margin": "30px"
+      }
+    ]
+  }
+}

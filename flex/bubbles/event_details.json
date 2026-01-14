@@ -1,0 +1,376 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "md",
+    "contents": [
+      {
+        "type": "text",
+        "text": "รายละเอียดงานแต่งงาน",
+        "wrap": true,
+        "weight": "bold",
+        "gravity": "center",
+        "size": "xl",
+        "margin": "10px"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "20px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "VOW Ceremony",
+            "weight": "bold",
+            "color": "#8E3A59",
+            "style": "italic",
+            "decoration": "none",
+            "align": "start"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "วัน",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "เสาร์ที่ 1 สิงหาคม 2026",
+                "wrap": true,
+                "size": "sm",
+                "color": "#666666",
+                "flex": 4
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เวลา",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "13:00 น.",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 4
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "สถานที่",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "คริสตจักรสดุดี กรุงเทพ",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 4,
+                "action": {
+                  "type": "message",
+                  "label": "การเดินทาง",
+                  "text": "การเดินทาง"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": []
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Celebration",
+            "color": "#8E3A59",
+            "weight": "bold",
+            "style": "italic",
+            "decoration": "none",
+            "align": "start"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "วัน",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "เสาร์ที่ 1 สิงหาคม 2026",
+                "wrap": true,
+                "size": "sm",
+                "color": "#666666",
+                "flex": 4
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เวลา",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "19:00 น.",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 4
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "สถานที่",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "Cloud 11 (Melt Livehouse)",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 4,
+                "action": {
+                  "type": "message",
+                  "label": "การเดินทาง",
+                  "text": "การเดินทาง"
+                }
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "No dinner provided",
+                "size": "sm",
+                "color": "#7A1E3A",
+                "style": "italic",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "Drinks & light refreshments included",
+                "size": "sm",
+                "style": "italic",
+                "weight": "regular"
+              },
+              {
+                "type": "text",
+                "text": "มีเครื่องดื่มและขนมเล็กน้อยให้บริการ",
+                "size": "sm",
+                "style": "italic",
+                "weight": "regular"
+              }
+            ],
+            "margin": "20px"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Please have dinner before arriving",
+            "size": "sm",
+            "color": "#7A1E3A",
+            "style": "italic",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "Feel free to bring your favorite food, snacks, or drinks",
+            "size": "sm",
+            "style": "italic",
+            "weight": "bold",
+            "wrap": true,
+            "color": "#7A1E3A"
+          },
+          {
+            "type": "text",
+            "text": "ยินดีนำอาหาร/ขนม/เครื่องดื่มที่ชอบมาร่วมฉลองด้วย",
+            "size": "sm",
+            "style": "italic",
+            "weight": "regular",
+            "wrap": true
+          }
+        ],
+        "margin": "20px"
+      },
+      {
+        "type": "separator",
+        "margin": "30px"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ธีมการแต่งกาย",
+            "weight": "bold"
+          },
+          {
+            "type": "icon",
+            "url": "https://avoltwedding.worshipnight.life/c1.png"
+          },
+          {
+            "type": "icon",
+            "url": "https://avoltwedding.worshipnight.life/c2.png",
+            "margin": "10px"
+          },
+          {
+            "type": "icon",
+            "url": "https://avoltwedding.worshipnight.life/c3.png",
+            "margin": "10px"
+          },
+          {
+            "type": "icon",
+            "url": "https://avoltwedding.worshipnight.life/c4.png",
+            "margin": "10px"
+          }
+        ],
+        "margin": "20px"
+      },
+      {
+        "type": "separator",
+        "margin": "20px"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "lg",
+        "spacing": "20px",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "เว็บไซต์",
+              "uri": "https://avoltwedding.worshipnight.life"
+            },
+            "style": "primary",
+            "color": "#7A1E3A"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "การเดินทาง",
+              "text": "การเดินทาง"
+            },
+            "style": "secondary"
+          }
+        ],
+        "flex": 2
+      },
+      {
+        "type": "separator",
+        "margin": "20px"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "lg",
+        "spacing": "20px",
+        "contents": [
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "ยืนยันมาร่วมงาน",
+              "text": "ยืนยันมาร่วมงาน"
+            },
+            "style": "primary",
+            "gravity": "bottom",
+            "scaling": true,
+            "color": "#7A1E3A"
+          }
+        ],
+        "flex": 2
+      }
+    ],
+    "backgroundColor": "#F7F3EE"
+  },
+  "styles": {
+    "header": {
+      "backgroundColor": "#7A1E3A"
+    }
+  }
+}

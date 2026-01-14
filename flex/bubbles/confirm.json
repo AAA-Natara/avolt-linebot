@@ -1,0 +1,68 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "md",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ยืนยันมาร่วมงาน",
+        "wrap": true,
+        "weight": "bold",
+        "gravity": "center",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เพื่อให้เราจัดเตรียมสถานที่ได้อย่างเหมาะสม",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1,
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "รบกวนกดยืนยันการมาร่วมงานด้านล่าง",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1,
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "⏱ ใช้เวลาไม่ถึง 1 นาที",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1,
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "ยืนยัน เจอกันแน่นอน",
+              "text": "ยืนยัน เจอกันแน่นอน"
+            },
+            "style": "primary",
+            "margin": "20px",
+            "color": "#7A1E3A"
+          }
+        ]
+      }
+    ]
+  }
+}

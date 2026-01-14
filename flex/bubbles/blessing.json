@@ -1,0 +1,60 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ฝากคำอวยพรให้เรา",
+        "weight": "bold",
+        "color": "#8E3A59",
+        "size": "xl"
+      },
+      {
+        "type": "text",
+        "text": "คำอวยพรจากคุณ คือของขวัญที่มีความหมายมากสำหรับเรา ",
+        "weight": "bold",
+        "size": "xxl",
+        "margin": "md",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "สามารถฝากข้อความไว้ให้เราได้เลย 🤍",
+        "size": "xl",
+        "color": "#aaaaaa",
+        "wrap": true
+      },
+      {
+        "type": "separator",
+        "margin": "xxl"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "อวยพร",
+          "text": "อวยพร"
+        },
+        "style": "primary",
+        "color": "#7A1E3A"
+      },
+      {
+        "type": "separator",
+        "margin": "xxl"
+      }
+    ]
+  },
+  "styles": {
+    "header": {
+      "backgroundColor": "#EAD7C2"
+    },
+    "body": {
+      "backgroundColor": "#F7F3EE"
+    },
+    "footer": {
+      "separator": true
+    }
+  }
+}
