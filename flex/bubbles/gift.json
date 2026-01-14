@@ -31,16 +31,7 @@
         "gravity": "center",
         "color": "#ffffff"
       },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": "แนบ Payslip",
-          "text": "แนบสลิป / Pay Slip"
-        },
-        "style": "secondary",
-        "margin": "md"
-      }
+      
     ],
     "backgroundColor": "#7a2f30",
     "spacing": "md"
