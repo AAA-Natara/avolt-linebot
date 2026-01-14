@@ -31,7 +31,7 @@
     "paddingAll": "20px",
     "backgroundColor": "#7A1E3A",
     "spacing": "md",
-    "height": "110px",
+    "height": "100px",
     "paddingTop": "22px"
   },
   "body": {
@@ -45,16 +45,16 @@
           {
             "type": "text",
             "text": "คริสตจักรสดุดี ",
-            "size": "xl",
             "flex": 4,
-            "weight": "bold"
+            "weight": "bold",
+            "size": "xl"
           },
           {
             "type": "text",
             "text": "Praise Church Bangkok",
-            "size": "xl",
+            "size": "sm",
             "flex": 4,
-            "weight": "bold"
+            "weight": "regular"
           }
         ]
       },
@@ -88,10 +88,8 @@
             "size": "sm"
           }
         ],
-        "spacing": "lg",
-        "cornerRadius": "30px",
-        "margin": "xl",
-        "flex": 2
+        "flex": 2,
+        "margin": "sm"
       },
       {
         "type": "box",
@@ -112,9 +110,7 @@
             "wrap": true
           }
         ],
-        "spacing": "lg",
         "cornerRadius": "30px",
-        "margin": "xl",
         "flex": 2
       },
       {
@@ -136,9 +132,7 @@
             "wrap": true
           }
         ],
-        "spacing": "lg",
         "cornerRadius": "30px",
-        "margin": "xl",
         "flex": 2
       },
       {
@@ -149,7 +143,7 @@
           "uri": "https://maps.app.goo.gl/ecKm5HQPdBHAQx4R7"
         },
         "style": "primary",
-        "margin": "30px",
+        "margin": "20px",
         "color": "#7A1E3A"
       },
       {
@@ -199,9 +193,7 @@
                 "size": "sm"
               }
             ],
-            "spacing": "lg",
             "cornerRadius": "30px",
-            "margin": "xl",
             "flex": 2
           },
           {
@@ -219,12 +211,11 @@
                 "type": "text",
                 "text": "ปุณณวิถี / Punnawithi",
                 "gravity": "center",
-                "size": "sm"
+                "size": "sm",
+                "wrap": true
               }
             ],
-            "spacing": "lg",
             "cornerRadius": "30px",
-            "margin": "xl",
             "flex": 2
           },
           {
@@ -246,9 +237,7 @@
                 "wrap": true
               }
             ],
-            "spacing": "lg",
             "cornerRadius": "30px",
-            "margin": "xl",
             "flex": 2
           },
           {
@@ -259,7 +248,7 @@
               "uri": "https://maps.app.goo.gl/nmmQEBFqFRkfU9db7"
             },
             "style": "primary",
-            "margin": "30px",
+            "margin": "20px",
             "color": "#7A1E3A"
           }
         ],
