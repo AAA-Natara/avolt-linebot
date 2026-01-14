@@ -250,7 +250,7 @@ async function handleEvent(event) {
   // ===== 2) คำสั่งหลัก =====
 
   // รายละเอียดงาน
-  if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
+  if (text === "รายละเอียดงาน" || text === "รายละเอียดงาน") {
     const bubble = FLEX.wedding();
     return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงาน", bubble));
   }
