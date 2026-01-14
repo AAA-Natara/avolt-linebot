@@ -1,0 +1,48 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://avoltwedding.worshipnight.life/paymentwedding.PNG",
+    "size": "full",
+    "aspectRatio": "20:25",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://avoltwedding.worshipnight.life/paymentwedding.PNG"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "For those who wish to give a wedding gift,",
+        "wrap": true,
+        "weight": "regular",
+        "gravity": "center",
+        "color": "#ffffff"
+      },
+      {
+        "type": "text",
+        "text": "we kindly accept envelopes or online transfers.",
+        "wrap": true,
+        "weight": "regular",
+        "gravity": "center",
+        "color": "#ffffff"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "แนบ Payslip",
+          "text": "แนบสลิป / Pay Slip"
+        },
+        "style": "secondary",
+        "margin": "md"
+      }
+    ],
+    "backgroundColor": "#7a2f30",
+    "spacing": "md"
+  }
+}

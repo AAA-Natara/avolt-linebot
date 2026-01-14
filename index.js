@@ -333,6 +333,22 @@ async function handleEvent(event) {
   });
 }
 
+// ของขวัญ
+if (text === "ของขวัญ" || text.toLowerCase() === "gift") {
+  const bubble = FLEX.gift();
+  return client.replyMessage(event.replyToken, flexMessage("ของขวัญ", bubble));
+}
+
+// กดปุ่มแนบสลิป
+if (text === "แนบสลิป / Pay Slip") {
+  sessions.set(userId, { step: "ASK_GIFT_SLIP", temp: {} });
+  return client.replyMessage(event.replyToken, {
+    type: "text",
+    text: "ได้เลยค่ะ 🤍 แนบสลิปเป็นรูปภาพหรือไฟล์เข้ามาในแชทนี้ได้เลยนะคะ",
+  });
+}
+
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
