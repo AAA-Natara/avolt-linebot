@@ -55,7 +55,7 @@ function flexMessage(altText, bubbleJson) {
 
 // แก้ชื่อไฟล์ให้ตรงกับที่คุณมีจริง
 const FLEX = {
-  wedding: () => loadJson("flex/bubbles/wedding_details.json"),
+  wedding: () => loadJson("flex/bubbles/event_details.json"),
   travel: () => loadJson("flex/bubbles/travel.json"),
   blessing: () => loadJson("flex/bubbles/blessing.json"),
   confirm: () => loadJson("flex/bubbles/confirm.json"),
