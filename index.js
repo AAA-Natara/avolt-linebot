@@ -1,34 +1,147 @@
-/**
- * AVOLT LINE Bot (no database version)
- * - Loads 4 bubble JSON files and wraps them into Flex messages
- * - RSVP flow: ask full name + guest count, store in memory
- * - Blessing flow: ask blessing text, store in memory
- *
- * NOTE: In-memory data will be lost if server restarts (Render redeploy/restart).
- */
-
-require("dotenv").config();
+"use strict";
 
 const express = require("express");
-const { Client, middleware } = require("@line/bot-sdk");
+const line = require("@line/bot-sdk");
+const dotenv = require("dotenv");
 const fs = require("fs");
 const path = require("path");
+const { createClient } = require("@supabase/supabase-js");
 
-// -------------------- LINE Config --------------------
-const config = {
-  channelAccessToken: process.env.LINE_CHANNEL_ACCESS_TOKEN,
-  channelSecret: process.env.LINE_CHANNEL_SECRET,
-};
-const client = new Client(config);
+dotenv.config();
 
-// -------------------- App --------------------
 const app = express();
 
-app.get("/", (_, res) => res.status(200).send("OK"));
+/**
+ * ENV REQUIRED:
+ * LINE_CHANNEL_SECRET
+ * LINE_CHANNEL_ACCESS_TOKEN
+ * SUPABASE_URL
+ * SUPABASE_SERVICE_ROLE_KEY
+ */
+const LINE_CHANNEL_SECRET = process.env.LINE_CHANNEL_SECRET;
+const LINE_CHANNEL_ACCESS_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN;
 
-app.post("/line/webhook", middleware(config), async (req, res) => {
+if (!LINE_CHANNEL_SECRET || !LINE_CHANNEL_ACCESS_TOKEN) {
+  console.error("Missing LINE env vars. Please set LINE_CHANNEL_SECRET and LINE_CHANNEL_ACCESS_TOKEN");
+}
+
+const config = {
+  channelSecret: LINE_CHANNEL_SECRET,
+  channelAccessToken: LINE_CHANNEL_ACCESS_TOKEN,
+};
+
+const client = new line.Client(config);
+
+// Supabase (service role)
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+
+// ========== Flex JSON loader ==========
+function loadJson(relPath) {
+  const full = path.join(__dirname, relPath);
+  const raw = fs.readFileSync(full, "utf8");
+  return JSON.parse(raw);
+}
+
+function flexMessage(altText, bubbleJson) {
+  return {
+    type: "flex",
+    altText,
+    contents: bubbleJson,
+  };
+}
+
+// แก้ชื่อไฟล์ให้ตรงกับที่คุณมีจริง
+const FLEX = {
+  wedding: () => loadJson("flex/bubbles/wedding_details.json"),
+  travel: () => loadJson("flex/bubbles/travel.json"),
+  blessing: () => loadJson("flex/bubbles/blessing.json"),
+  confirm: () => loadJson("flex/bubbles/confirm.json"),
+};
+
+// ========== In-memory session (คุยถามชื่อ/จำนวน/อวยพร) ==========
+/**
+ * sessions Map:
+ * userId -> { step: "ASK_NAME"|"ASK_COUNT"|"ASK_BLESSING", temp: {...} }
+ */
+const sessions = new Map();
+
+// ========== Supabase helpers ==========
+async function getRsvp(userId) {
+  const { data, error } = await supabase
+    .from("rsvps")
+    .select("user_id, full_name, guests_count")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (error) throw error;
+  return data; // null ถ้าไม่มี
+}
+
+async function upsertRsvp(userId, fullName, guestsCount) {
+  const { data, error } = await supabase
+    .from("rsvps")
+    .upsert(
+      {
+        user_id: userId,
+        full_name: fullName,
+        guests_count: guestsCount,
+        updated_at: new Date().toISOString(),
+      },
+      { onConflict: "user_id" }
+    )
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+async function insertBlessing(userId, message) {
+  const { data, error } = await supabase
+    .from("blessings")
+    .insert([{ user_id: userId, message }])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+// ========== Debug routes ==========
+app.get("/", (req, res) => res.send("OK"));
+
+app.get("/test-db", async (req, res) => {
   try {
-    await Promise.all((req.body.events || []).map(handleEvent));
+    const hasUrl = !!process.env.SUPABASE_URL;
+    const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!hasUrl || !hasKey) {
+      return res.status(500).json({
+        ok: false,
+        env: {
+          SUPABASE_URL: hasUrl ? "SET" : "MISSING",
+          SUPABASE_SERVICE_ROLE_KEY: hasKey ? "SET" : "MISSING",
+        },
+      });
+    }
+
+    const { data, error } = await supabase.from("rsvps").select("*").limit(5);
+    if (error) return res.status(500).json({ ok: false, error });
+
+    return res.json({ ok: true, rows: data });
+  } catch (e) {
+    return res.status(500).json({ ok: false, message: e.message || String(e) });
+  }
+});
+
+// ========== LINE webhook ==========
+app.post("/line/webhook", line.middleware(config), async (req, res) => {
+  try {
+    const events = req.body.events || [];
+    await Promise.all(events.map(handleEvent));
     res.status(200).end();
   } catch (err) {
     console.error("Webhook error:", err);
@@ -36,230 +149,191 @@ app.post("/line/webhook", middleware(config), async (req, res) => {
   }
 });
 
-// -------------------- Flex helpers --------------------
-function bubbleFromFile(filename) {
-  const filePath = path.join(__dirname, "flex", "bubbles", filename);
-  const raw = fs.readFileSync(filePath, "utf8");
-  return JSON.parse(raw);
-}
-
-function flexWrap(bubble, altText) {
-  return { type: "flex", altText, contents: bubble };
-}
-
-// -------------------- In-memory storage --------------------
-// RSVP saved by userId
-// { fullName: string, guestsCount: number, updatedAt: ISO string }
-const rsvpStore = new Map();
-
-// Blessings saved by userId (array of messages)
-const blessingStore = new Map();
-
-// Conversation sessions (multi-step)
-const sessions = new Map();
-// sessions.set(userId, { step: "ASK_NAME" | "ASK_COUNT" | "ASK_BLESSING", fullName?: string })
-
-// -------------------- Utilities --------------------
-function isNumberInRange(n, min, max) {
-  return Number.isFinite(n) && n >= min && n <= max;
-}
-
 function normalizeText(t) {
   return (t || "").trim();
 }
 
-// -------------------- Main handler --------------------
-async function handleEvent(event) {
-  if (event.type !== "message" || event.message.type !== "text") return null;
+function isNumberLike(text) {
+  // รับทั้ง "2", "2คน", "2 คน", "สอง" (ไม่รองรับคำไทยแบบหนึ่งสองในเวอร์ชันนี้)
+  const m = text.match(/\d+/);
+  if (!m) return null;
+  const n = parseInt(m[0], 10);
+  if (Number.isNaN(n)) return null;
+  return n;
+}
 
-  const userId = event.source?.userId || null;
+async function handleEvent(event) {
+  // สนใจเฉพาะข้อความ
+  if (event.type !== "message" || event.message.type !== "text") return;
+
+  const userId = event.source && event.source.userId;
   const text = normalizeText(event.message.text);
 
-  // If we can't identify userId, we can still send flex info,
-  // but cannot do RSVP/blessing saving.
-  const canSave = Boolean(userId);
-
-  // -------------------- 1) Continue session if ongoing --------------------
-  const sess = canSave ? sessions.get(userId) : null;
-
-  // ASK_NAME -> save full name then ask count
-  if (sess?.step === "ASK_NAME") {
-    const fullName = text;
-
-    if (fullName.length < 3) {
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "ขอชื่อ-สกุลแบบเต็ม ๆ อีกครั้งได้ไหมคะ 😊",
-      });
-    }
-
-    sessions.set(userId, { step: "ASK_COUNT", fullName });
+  // ถ้าไม่มี userId (บางกรณีในบาง source) ให้ตอบแบบเบาๆ
+  if (!userId) {
     return client.replyMessage(event.replyToken, {
       type: "text",
-      text: "ขอบคุณค่ะ 💗\nมาทั้งหมดกี่คนคะ? (ใส่ “จำนวนรวมตัวเอง” เช่น 1, 2, 3)",
+      text: "ขออภัย ระบบอ่าน userId ไม่ได้ ลองพิมพ์ใหม่ในแชทส่วนตัวกับบอทอีกครั้งนะคะ",
     });
   }
 
-  // ASK_COUNT -> parse number, store RSVP
-  if (sess?.step === "ASK_COUNT") {
-    const n = parseInt(text, 10);
+  // ===== 1) ถ้ามี session ค้างอยู่ ให้ทำตาม step ก่อน =====
+  const sess = sessions.get(userId);
+  if (sess) {
+    // ASK_NAME
+    if (sess.step === "ASK_NAME") {
+      const fullName = text;
+      if (fullName.length < 2) {
+        return client.replyMessage(event.replyToken, {
+          type: "text",
+          text: "ขอชื่อ-นามสกุลอีกครั้งได้ไหมคะ (เช่น Natara Thawattara)",
+        });
+      }
+      sess.temp.fullName = fullName;
+      sess.step = "ASK_COUNT";
+      sessions.set(userId, sess);
 
-    if (!isNumberInRange(n, 1, 20)) {
       return client.replyMessage(event.replyToken, {
         type: "text",
-        text: "พิมพ์เป็นตัวเลข 1–20 ได้ไหมคะ เช่น 1 หรือ 2 😊",
+        text: "มาทั้งหมดกี่คนคะ? (รวมตัวเอง) เช่น 1, 2, 3",
       });
     }
 
-    rsvpStore.set(userId, {
-      fullName: sess.fullName,
-      guestsCount: n,
-      updatedAt: new Date().toISOString(),
-    });
-    sessions.delete(userId);
+    // ASK_COUNT
+    if (sess.step === "ASK_COUNT") {
+      const n = isNumberLike(text);
+      if (!n || n < 1 || n > 50) {
+        return client.replyMessage(event.replyToken, {
+          type: "text",
+          text: "ขอเป็นตัวเลข 1–50 นะคะ (รวมตัวเอง) เช่น 2",
+        });
+      }
 
+      const saved = await upsertRsvp(userId, sess.temp.fullName, n);
+      sessions.delete(userId);
+
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text:
+          `ยืนยันเรียบร้อยแล้วค่ะ ✅\n` +
+          `ชื่อ: ${saved.full_name}\n` +
+          `จำนวน: ${saved.guests_count} คน\n\n` +
+          `พิมพ์ดูข้อมูลได้เลย:\n` +
+          `- รายละเอียดงาน\n` +
+          `- การเดินทาง\n` +
+          `- คำอวยพร`,
+      });
+    }
+
+    // ASK_BLESSING
+    if (sess.step === "ASK_BLESSING") {
+      const msg = text;
+      if (msg.length < 2) {
+        return client.replyMessage(event.replyToken, {
+          type: "text",
+          text: "พิมพ์คำอวยพรอีกครั้งได้ไหมคะ 🤍",
+        });
+      }
+
+      await insertBlessing(userId, msg);
+      sessions.delete(userId);
+
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text:
+          "รับคำอวยพรเรียบร้อยแล้วค่ะ 🥺🤍\nขอบคุณมากจริง ๆ นะคะ\n\n" +
+          "พิมพ์ได้เลย:\n- รายละเอียดงาน\n- ยืนยันมาร่วมงาน\n- การเดินทาง",
+      });
+    }
+  }
+
+  // ===== 2) คำสั่งหลัก =====
+
+  // รายละเอียดงาน
+  if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
+    const bubble = FLEX.wedding();
+    return client.replyMessage(event.replyToken, flexMessage("รายละเอียดงานแต่งงาน", bubble));
+  }
+
+  // การเดินทาง
+  if (text === "การเดินทาง" || text.toLowerCase() === "travel") {
+    const bubble = FLEX.travel();
+    return client.replyMessage(event.replyToken, flexMessage("การเดินทาง", bubble));
+  }
+
+  // คำอวยพร (โชว์การ์ด)
+  if (text === "คำอวยพร") {
+    const bubble = FLEX.blessing();
+    return client.replyMessage(event.replyToken, flexMessage("ฝากคำอวยพร", bubble));
+  }
+
+  // กดปุ่ม "อวยพร" ในการ์ด -> เริ่มรับข้อความอวยพร
+  if (text === "อวยพร") {
+    sessions.set(userId, { step: "ASK_BLESSING", temp: {} });
     return client.replyMessage(event.replyToken, {
       type: "text",
-      text:
-        `ยืนยันเรียบร้อยแล้วค่ะ ✅\n` +
-        `ชื่อ: ${sess.fullName}\n` +
-        `จำนวน: ${n} คน\n\n` +
-        `ดูรายละเอียดงานพิมพ์: รายละเอียดงาน\n` +
-        `ดูการเดินทางพิมพ์: การเดินทาง\n` +
-        `ฝากคำอวยพรพิมพ์: คำอวยพร`,
+      text: "พิมพ์คำอวยพรของคุณได้เลยนะคะ 🤍 (ส่งมาเป็น 1 ข้อความได้เลย)",
     });
   }
 
-  // ASK_BLESSING -> store blessing message
-  if (sess?.step === "ASK_BLESSING") {
-    const msg = text;
-
-    if (msg.length < 2) {
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "ส่งคำอวยพรอีกครั้งได้ไหมคะ 😊",
-      });
-    }
-
-    const arr = blessingStore.get(userId) || [];
-    arr.push({ message: msg, createdAt: new Date().toISOString() });
-    blessingStore.set(userId, arr);
-    sessions.delete(userId);
-
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text:
-        "รับคำอวยพรเรียบร้อยแล้วค่ะ 🥺🤍\nขอบคุณมากจริง ๆ นะคะ\n\n" +
-        "ดูรายละเอียดงานพิมพ์: รายละเอียดงาน\n" +
-        "ยืนยันมาร่วมงานพิมพ์: ยืนยันมาร่วมงาน",
-    });
+  // ยืนยันมาร่วมงาน (โชว์การ์ด)
+  if (text === "ยืนยันมาร่วมงาน" || text === "rsvp" || text.toLowerCase() === "rsvp") {
+    const bubble = FLEX.confirm();
+    return client.replyMessage(event.replyToken, flexMessage("ยืนยันมาร่วมงาน", bubble));
   }
 
-  // -------------------- 2) Flex commands (โหลดจากไฟล์) --------------------
-  if (text.includes("รายละเอียดงาน")) {
-    return client.replyMessage(
-      event.replyToken,
-      flexWrap(bubbleFromFile("event_details.json"), "รายละเอียดงานแต่งงาน")
-    );
-  }
-
-  if (text.includes("การเดินทาง")) {
-    return client.replyMessage(
-      event.replyToken,
-      flexWrap(bubbleFromFile("travel.json"), "การเดินทาง")
-    );
-  }
-
-  // “คำอวยพร” = แสดงการ์ดเชิญอวยพร (ปุ่มในนั้นส่งคำว่า "อวยพร")
-  if (text.includes("คำอวยพร") || text.includes("ฝากคำอวยพร")) {
-    return client.replyMessage(
-      event.replyToken,
-      flexWrap(bubbleFromFile("blessing.json"), "ฝากคำอวยพรให้เรา")
-    );
-  }
-
-  // “ยืนยันมาร่วมงาน” = แสดงการ์ด confirm (ปุ่มในนั้นส่ง "ยืนยัน เจอกันแน่นอน")
-  if (text.includes("ยืนยันมาร่วมงาน")) {
-    return client.replyMessage(
-      event.replyToken,
-      flexWrap(bubbleFromFile("confirm.json"), "ยืนยันมาร่วมงาน")
-    );
-  }
-
-  // -------------------- 3) Start flows --------------------
-  // Start blessing flow (user presses button "อวยพร")
-  if (text === "อวยพร" || text.includes("เขียนอวยพร")) {
-    if (!canSave) {
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "ขออนุญาตให้พิมพ์คำอวยพรในแชทส่วนตัวกับบอทนะคะ 😊",
-      });
-    }
-
-    sessions.set(userId, { step: "ASK_BLESSING" });
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: "พิมพ์คำอวยพรให้เราได้เลยนะคะ 🤍\n(ส่งมา 1 ข้อความยาว ๆ ได้เลย)",
-    });
-  }
-
-  // Start RSVP flow (user presses button "ยืนยัน เจอกันแน่นอน")
-  const startConfirm =
-    text === "ยืนยัน" ||
-    text.includes("ยืนยัน เจอกันแน่นอน") ||
-    text.includes("ยืนยันการมาร่วมงาน") ||
-    text.includes("กดยืนยัน");
-
-  if (startConfirm) {
-    if (!canSave) {
-      return client.replyMessage(event.replyToken, {
-        type: "text",
-        text: "ขออนุญาตให้ยืนยันในแชทส่วนตัวกับบอทนะคะ 😊",
-      });
-    }
-
-    const existing = rsvpStore.get(userId);
+  // เริ่ม flow RSVP (จากปุ่มในการ์ด)
+  if (text === "ยืนยัน เจอกันแน่นอน" || text === "ยืนยันเจอกันแน่นอน") {
+    const existing = await getRsvp(userId);
     if (existing) {
       return client.replyMessage(event.replyToken, {
         type: "text",
         text:
           `คุณยืนยันมาแล้วค่ะ ✅\n` +
-          `ชื่อ: ${existing.fullName}\n` +
-          `จำนวน: ${existing.guestsCount} คน\n\n` +
+          `ชื่อ: ${existing.full_name}\n` +
+          `จำนวน: ${existing.guests_count} คน\n\n` +
           `ถ้าต้องการแก้ไข พิมพ์: แก้ไขการยืนยัน`,
       });
     }
 
-    sessions.set(userId, { step: "ASK_NAME" });
+    sessions.set(userId, { step: "ASK_NAME", temp: {} });
     return client.replyMessage(event.replyToken, {
       type: "text",
-      text: "ขอบคุณที่มาร่วมงานนะคะ 💗\nขอชื่อ-สกุลของคุณหน่อยค่ะ",
+      text: "ขอชื่อ-นามสกุลหน่อยค่ะ (เพื่อยืนยันการมาร่วมงาน)",
     });
   }
 
-  // Edit RSVP
-  if (text.includes("แก้ไขการยืนยัน")) {
-    if (!canSave) return null;
-
-    sessions.set(userId, { step: "ASK_NAME" });
+  // แก้ไข RSVP
+  if (text === "แก้ไขการยืนยัน") {
+    sessions.set(userId, { step: "ASK_NAME", temp: {} });
     return client.replyMessage(event.replyToken, {
       type: "text",
-      text: "ได้เลยค่ะ ✨\nขอชื่อ-สกุลใหม่ของคุณหน่อยค่ะ",
+      text: "ได้เลยค่ะ ✨ ขอชื่อ-นามสกุลใหม่อีกครั้งนะคะ",
     });
   }
 
-  // -------------------- 4) Default help --------------------
+  // help เบา ๆ
+  if (text === "help" || text === "ช่วยเหลือ" || text === "เมนู") {
+    return client.replyMessage(event.replyToken, {
+      type: "text",
+      text:
+        "พิมพ์คำสั่งได้เลยค่ะ:\n" +
+        "- รายละเอียดงาน\n" +
+        "- การเดินทาง\n" +
+        "- ยืนยันมาร่วมงาน\n" +
+        "- คำอวยพร",
+    });
+  }
+
+  // ไม่ match อะไร -> ไม่ตอบก็ได้ หรือจะตอบเบา ๆ
   return client.replyMessage(event.replyToken, {
     type: "text",
-    text:
-      "พิมพ์คำสั่งได้เลยค่ะ 😊\n" +
-      "- รายละเอียดงาน\n" +
-      "- การเดินทาง\n" +
-      "- คำอวยพร\n" +
-      "- ยืนยันมาร่วมงาน",
+    text: "พิมพ์ “เมนู” เพื่อดูคำสั่งทั้งหมดได้นะคะ 🤍",
   });
 }
 
-// -------------------- Start server --------------------
+// Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server running on port", PORT));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

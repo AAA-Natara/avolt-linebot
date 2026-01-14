@@ -365,12 +365,6 @@
         ],
         "flex": 2
       }
-    ],
-    "backgroundColor": "#F7F3EE"
-  },
-  "styles": {
-    "header": {
-      "backgroundColor": "#7A1E3A"
-    }
+    ]
   }
 }

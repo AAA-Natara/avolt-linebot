@@ -47,12 +47,6 @@
     ]
   },
   "styles": {
-    "header": {
-      "backgroundColor": "#EAD7C2"
-    },
-    "body": {
-      "backgroundColor": "#F7F3EE"
-    },
     "footer": {
       "separator": true
     }

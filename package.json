@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@line/bot-sdk": "^10.5.0",
+    "@supabase/supabase-js": "^2.90.1",
     "dotenv": "^17.2.3",
     "express": "^5.2.1"
   }
