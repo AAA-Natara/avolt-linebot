@@ -161,8 +161,8 @@ cron.schedule("0 0 13 1 8 *", async () => {
   await broadcastToAllGuests("vow_start", (name) => ({
     type: "text",
     text:
-      `สวัสดีค่ะคุณ${name} 🤍\n\n` +
-      `พิธี VOW Ceremony กำลังจะเริ่มแล้วค่ะ\n` +
+      `สวัสดีค่ะ ${name} 🤍\n\n` +
+      `พิธี VOW Ceremony กำลังจะเริ่มแล้วนะคะ\n` +
       `ขอเชิญเข้าสู่บริเวณงานได้เลยนะคะ\n\n` +
       `📍 คริสตจักรสดุดี กรุงเทพฯ\n` +
       `🕐 13:00 น.`,
@@ -175,7 +175,7 @@ cron.schedule("0 0 19 1 8 *", async () => {
   await broadcastToAllGuests("celebration_start", (name) => ({
     type: "text",
     text:
-      `คุณ${name} ค่ะ 🥂\n\n` +
+      `${name}  🥂\n\n` +
       `ช่วงเฉลิมฉลองกำลังจะเริ่มแล้วค่ะ!\n` +
       `มาสนุกด้วยกันที่ Cloud 11 ได้เลยนะคะ ✨\n\n` +
       `📍 Cloud 11 (Melt Livehouse)\n` +
@@ -204,11 +204,11 @@ cron.schedule("0 0 15 1 8 *", async () => {
   await broadcastToAllGuests("order_drinks", (name) => ({
     type: "text",
     text:
-      `คุณ${name} ค่ะ 🥂\n\n` +
+      `คุณ${name} \n\n` +
       `ตอนนี้สั่งเครื่องดื่มได้แล้วนะคะ!\n` +
       `กดลิงก์ด้านล่างเพื่อเลือกเครื่องดื่มได้เลยค่ะ 👇\n\n` +
       `https://liff.line.me/2009323052-tvtJa02F\n\n` +
-      `🍷 มีให้เลือกหลายเมนูนะคะ\n` +
+      ` มีให้เลือกหลายเมนูนะคะ\n` +
       `(สั่งได้คนละ 2 แก้วค่ะ)`,
   }));
 }, { timezone: "Asia/Bangkok" });
