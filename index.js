@@ -198,6 +198,21 @@ cron.schedule("0 0 22 1 8 *", async () => {
   }));
 }, { timezone: "Asia/Bangkok" });
 
+// 4) แจ้งสั่งน้ำ — 15:00 น. วันที่ 1 สิงหาคม 2026
+cron.schedule("0 0 15 1 8 *", async () => {
+  console.log("[CRON] ยิง message แจ้งสั่งน้ำ 15:00");
+  await broadcastToAllGuests("order_drinks", (name) => ({
+    type: "text",
+    text:
+      `คุณ${name} ค่ะ 🥂\n\n` +
+      `ตอนนี้สั่งเครื่องดื่มได้แล้วนะคะ!\n` +
+      `กดลิงก์ด้านล่างเพื่อเลือกเครื่องดื่มได้เลยค่ะ 👇\n\n` +
+      `https://liff.line.me/2009323052-tvtJa02F\n\n` +
+      `🍷 มีให้เลือกหลายเมนูนะคะ\n` +
+      `(สั่งได้คนละ 2 แก้วค่ะ)`,
+  }));
+}, { timezone: "Asia/Bangkok" });
+
 // ========== Debug routes ==========
 app.use(express.static("public"));
 app.get("/", (req, res) => res.send("OK"));
