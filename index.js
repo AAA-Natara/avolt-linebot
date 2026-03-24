@@ -193,6 +193,15 @@ function isNumberLike(text) {
 
 const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
 
+const beaconSentMap = new Map();
+
+function canSendBeacon(userId) {
+  const last = beaconSentMap.get(userId);
+  if (!last) return true;
+  return (Date.now() - last) > 10 * 60 * 1000;
+}
+
+
 async function handleEvent(event) {
 
   // ─── FOLLOW EVENT (แอดเพื่อน OA) ───
