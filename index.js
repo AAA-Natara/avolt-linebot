@@ -191,6 +191,8 @@ function isNumberLike(text) {
   return n;
 }
 
+const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
+
 async function handleEvent(event) {
 
   // ─── FOLLOW EVENT (แอดเพื่อน OA) ───
