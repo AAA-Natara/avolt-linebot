@@ -224,7 +224,7 @@ const firstName = profile.displayName;
   type: "text",
   text:
     `ยินดีต้อนรับสู่ AVOLT Homeee \n
-    ` คุณ ${firstName} ✨\n\n\n\n` +
+     คุณ ${firstName} ✨\n\n\n\n` +
     `WiFi: WorshipHome\n` +
     `Password: PRAISE247\n\n` +
     `น้ำอยู่ในตู้เย็น เดินไปหยิบได้เลยนะคะ\n\n` +
