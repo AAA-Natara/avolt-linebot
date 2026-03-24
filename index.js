@@ -291,17 +291,24 @@ async function handleEvent(event) {
     }
     beaconSentMap.set(userId, Date.now());
     try {
-      const guest = await getRsvp(userId);
-      const name = guest?.full_name || "คุณแขก";
-      const firstName = name.split(" ")[0];
+      const profile = await client.getProfile(userId);
+const firstName = profile.displayName;
       await client.pushMessage(userId, {
-        type: "text",
-        text:
-          `ยินดีต้อนรับค่ะคุณ${firstName} 🤍\n\n` +
-          `เอ & โวลท์ดีใจมากที่คุณมาร่วมงานค่ะ\n` +
-          `ขอให้สนุกและมีความสุขตลอดคืนนะคะ ✨\n\n` +
-          `พิมพ์ "เมนู" เพื่อดูข้อมูลงานได้เลยค่ะ`,
-      });
+  type: "text",
+  text:
+    `ยินดีต้อนรับสู่บ้าน A & Volt นะคะ ${firstName} 🏠✨\n\n` +
+    `📶 WiFi: WorshipHome\n` +
+    `🔑 Password: PRAISE247\n\n` +
+    `🧊 น้ำอยู่ในตู้เย็น เดินไปหยิบได้เลยนะคะ\n\n` +
+    `🎮 บนตู้ทีวีมี\n` +
+    `   · PS5\n` +
+    `   · Nintendo\n` +
+    `   · Board games\n` +
+    `อยากเล่นไรหยิบมาได้เลยนะคะ บ้านนี้บ้านเรา 😄\n\n` +
+    `✨ "จงต้อนรับแขกด้วยความยินดี"\n` +
+    `— โรม 12:13\n\n` +
+    `มีอะไรสอบถามได้เลยนะคะ 🤍`,
+});
       console.log(`[BEACON] Welcome → ${name}`);
     } catch (err) {
       console.error("[BEACON] Error:", err.message);
