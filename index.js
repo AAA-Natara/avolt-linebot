@@ -198,7 +198,7 @@ const beaconSentMap = new Map();
 function canSendBeacon(userId) {
   const last = beaconSentMap.get(userId);
   if (!last) return true;
-  return (Date.now() - last) > 10 * 60 * 10;
+  return (Date.now() - last) > 1000;
 }
 
 
