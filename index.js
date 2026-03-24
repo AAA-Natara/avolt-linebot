@@ -293,7 +293,7 @@ async function handleEvent(event) {
     try {
       const profile = await client.getProfile(userId);
 const firstName = profile.displayName;
-      await client.pushMessage(userId, {
+ await client.pushMessage(userId, {
   type: "text",
   text:
     `ยินดีต้อนรับสู่บ้าน A & Volt นะคะ ${firstName} 🏠✨\n\n` +
@@ -305,8 +305,7 @@ const firstName = profile.displayName;
     `   · Nintendo\n` +
     `   · Board games\n` +
     `อยากเล่นไรหยิบมาได้เลยนะคะ บ้านนี้บ้านเรา 😄\n\n` +
-    `✨ "จงต้อนรับแขกด้วยความยินดี"\n` +
-    `— โรม 12:13\n\n` +
+    `✨ "จงต้อนรับแขกด้วยความยินดี" — โรม 12:13\n\n` +
     `มีอะไรสอบถามได้เลยนะคะ 🤍`,
 });
       console.log(`[BEACON] Welcome → ${name}`);
