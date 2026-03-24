@@ -510,8 +510,17 @@ const firstName = profile.displayName;
   });
 }
 
+
+
+// Keep alive — กัน Render หลับ
+setInterval(() => {
+  const url = process.env.RENDER_EXTERNAL_URL || "https://avolt-linebot.onrender.com";
+  fetch(url).catch(() => {});
+}, 5 * 60 * 1000);
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
