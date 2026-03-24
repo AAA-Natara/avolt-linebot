@@ -223,17 +223,18 @@ const firstName = profile.displayName;
  await client.pushMessage(userId, {
   type: "text",
   text:
-    `ยินดีต้อนรับสู่บ้าน A & Volt นะคะ ${firstName} 🏠✨\n\n` +
-    `📶 WiFi: WorshipHome\n` +
-    `🔑 Password: PRAISE247\n\n` +
-    `🧊 น้ำอยู่ในตู้เย็น เดินไปหยิบได้เลยนะคะ\n\n` +
-    `🎮 บนตู้ทีวีมี\n` +
+    `ยินดีต้อนรับสู่ AVOLT Homeee \n
+    ` คุณ ${firstName} ✨\n\n\n\n` +
+    `WiFi: WorshipHome\n` +
+    `Password: PRAISE247\n\n` +
+    `น้ำอยู่ในตู้เย็น เดินไปหยิบได้เลยนะคะ\n\n` +
+    `บนตู้ทีวีมี\n` +
     `   · PS5\n` +
     `   · Nintendo\n` +
     `   · Board games\n` +
-    `อยากเล่นไรหยิบมาได้เลยนะคะ บ้านนี้บ้านเรา 😄\n\n` +
-    `✨ "จงต้อนรับแขกด้วยความยินดี" — โรม 12:13\n\n` +
-    `มีอะไรสอบถามได้เลยนะคะ 🤍`,
+    `อยากเล่นไรหยิบมาได้เลย อย่าปาทิ้งก็พอ 55555 \n\n\n\n` +
+    `✨ "เหตุฉะนั้น จงต้อนรับกันและกัน เหมือนอย่างที่พระคริสต์ทรงรับพวกท่าน เพื่อเป็นการถวายพระเกียรติแด่พระเจ้า" — โรม 15:7\n\n` +
+    ` 🤍`,
 });
       console.log(`[BEACON] Welcome → ${firstName}`);
     } catch (err) {
