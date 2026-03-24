@@ -308,7 +308,7 @@ const firstName = profile.displayName;
     `✨ "จงต้อนรับแขกด้วยความยินดี" — โรม 12:13\n\n` +
     `มีอะไรสอบถามได้เลยนะคะ 🤍`,
 });
-      console.log(`[BEACON] Welcome → ${name}`);
+      console.log(`[BEACON] Welcome → ${firstName}`);
     } catch (err) {
       console.error("[BEACON] Error:", err.message);
     }
