@@ -54,7 +54,7 @@
       },
       {
         "type": "box",
-        "layout": "horizontal",
+        "layout": "vertical",
         "spacing": "sm",
         "margin": "sm",
         "contents": [
@@ -64,7 +64,7 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "Love Corner : แชร์รูปและเรื่องราว",
+              "label": "แชร์รูปและเรื่องราว",
               "uri": "https://avoltwedding.worshipnight.life/lovecorner"
             }
           },
@@ -74,7 +74,7 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "Market : ฝากร้าน ฝากผลงาน",
+              "label": "ฝากร้าน ฝากผลงาน",
               "uri": "https://avoltwedding.worshipnight.life/market"
             }
           }
