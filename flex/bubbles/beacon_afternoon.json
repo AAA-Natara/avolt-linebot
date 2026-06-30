@@ -1,118 +1,110 @@
 {
-  "type": "bubble",
-  "size": "mega",
-  "header": {
-    "type": "box",
-    "layout": "vertical",
-    "backgroundColor": "#7A1E3A",
-    "paddingAll": "20px",
-    "contents": [
-      {
-        "type": "text",
-        "text": "THE VOWS · 1 PM",
-        "size": "xs",
-        "color": "#E3D9B0",
-        "align": "center",
-        "weight": "bold"
-      },
-      {
-        "type": "text",
-        "text": "พิธีมงคลสมรส",
-        "size": "lg",
-        "color": "#ffffff",
-        "weight": "bold",
-        "align": "center",
-        "margin": "sm"
-      },
-      {
-        "type": "text",
-        "text": "คริสตจักรสดุดี กรุงเทพ",
-        "size": "xs",
-        "color": "#E3D9B0",
-        "align": "center",
-        "margin": "xs"
-      }
-    ]
-  },
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "paddingAll": "18px",
-    "contents": [
-      {
-        "type": "text",
-        "text": "ช่วงบ่ายเป็นพิธีคำสาบานและการเฉลิมฉลองเล็ก ๆ ขอเรียนเชิญทุกท่านร่วมเป็นสักขีพยานค่ะ",
-        "size": "sm",
-        "color": "#888888",
-        "align": "center",
-        "wrap": true
-      },
-      {
-        "type": "button",
-        "style": "primary",
-        "color": "#7A1E3A",
-        "height": "sm",
-        "margin": "lg",
-        "action": {
-          "type": "uri",
-          "label": "ดูกำหนดการช่วงบ่าย",
-          "uri": "https://avoltwedding.worshipnight.life/guide"
-        }
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "spacing": "sm",
-        "margin": "sm",
-        "contents": [
-          {
-            "type": "button",
-            "style": "secondary",
-            "height": "sm",
-            "action": {
-              "type": "uri",
-              "label": "สั่งเครื่องดื่ม",
-              "uri": "https://liff.line.me/2009323052-tvtJa02F"
-            }
-          },
-          {
-            "type": "button",
-            "style": "secondary",
-            "height": "sm",
-            "action": {
-              "type": "uri",
-              "label": "Love Corner",
-              "uri": "https://avoltwedding.worshipnight.life/lovecorner"
-            }
-          }
-        ]
-      },
-      {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
         "type": "box",
         "layout": "vertical",
-        "backgroundColor": "#FAEEDA",
-        "cornerRadius": "8px",
-        "paddingAll": "12px",
-        "margin": "lg",
+        "backgroundColor": "#7A1E3A",
+        "paddingAll": "18px",
         "contents": [
+          { "type": "text", "text": "THE VOWS · 1 PM", "size": "xs", "color": "#E3D9B0", "align": "center", "weight": "bold" },
+          { "type": "text", "text": "พิธีมงคลสมรส", "size": "lg", "color": "#ffffff", "weight": "bold", "align": "center", "margin": "sm" },
+          { "type": "text", "text": "คริสตจักรสดุดี กรุงเทพ", "size": "xs", "color": "#E3D9B0", "align": "center", "margin": "xs" }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "16px",
+        "contents": [
+          { "type": "text", "text": "ลำดับพิธี · Order of Ceremony", "size": "xs", "color": "#7A1E3A", "weight": "bold", "margin": "none" },
           {
-            "type": "text",
-            "text": "งานบ่ายเลิกประมาณ 16:00–17:00",
-            "size": "xs",
-            "color": "#854F0B",
-            "weight": "bold",
-            "wrap": true
+            "type": "box", "layout": "horizontal", "margin": "md", "spacing": "lg",
+            "contents": [
+              {
+                "type": "box", "layout": "vertical", "flex": 1, "spacing": "sm",
+                "contents": [
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "01", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "อธิษฐานเปิด", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "02", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "อัญเชิญพระวจนะ", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "03", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "นมัสการพระเจ้า", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "04", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "พิธีสมรสศักดิ์สิทธิ์", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "05", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "เพลงพิเศษ (1)", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "06", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "เพลงพิเศษ (2)", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "07", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "ให้โอวาท", "size": "xxs", "color": "#555555", "wrap": true } ] }
+                ]
+              },
+              {
+                "type": "box", "layout": "vertical", "flex": 1, "spacing": "sm",
+                "contents": [
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "08", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "ลงนามทะเบียนสมรส", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "09", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "เคารพผู้ปกครอง", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "10", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "พิธีมหาสนิท", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "11", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "กล่าวแสดงความยินดี", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "12", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "อธิษฐานปิด", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "13", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "ประกาศการเป็นสามีภรรยา", "size": "xxs", "color": "#555555", "wrap": true } ] },
+                  { "type": "box", "layout": "baseline", "spacing": "sm", "contents": [ { "type": "text", "text": "14", "size": "xxs", "color": "#8E5A6B", "flex": 0, "weight": "bold" }, { "type": "text", "text": "ถ่ายภาพร่วมกัน", "size": "xxs", "color": "#555555", "wrap": true } ] }
+                ]
+              }
+            ]
           },
+          { "type": "separator", "margin": "lg", "color": "#E3D9B0" },
           {
-            "type": "text",
-            "text": "มีช่วงพักก่อนไปงานเย็นที่ Cloud 11 หาของทานรองท้องแถวนี้ได้ก่อนนะคะ",
-            "size": "xs",
-            "color": "#854F0B",
-            "wrap": true,
-            "margin": "xs"
+            "type": "box", "layout": "vertical", "backgroundColor": "#F7F2EC", "cornerRadius": "8px", "paddingAll": "12px", "margin": "lg",
+            "contents": [
+              { "type": "text", "text": "พิธีสมรสในพระคัมภีร์", "size": "xs", "color": "#8E5A6B", "weight": "bold" },
+              { "type": "text", "text": "การสมรสเป็นพันธสัญญาต่อหน้าพระเจ้าตั้งแต่ปฐมกาล ที่ชายหญิงจะเป็นเนื้อเดียวกัน และเอเฟซัส 5 เปรียบความรักของคู่สมรสเหมือนความรักที่พระคริสต์มีต่อคริสตจักร", "size": "xxs", "color": "#777777", "wrap": true, "margin": "sm" }
+            ]
           }
         ]
       }
-    ]
-  }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#8E5A6B",
+        "paddingAll": "18px",
+        "contents": [
+          { "type": "text", "text": "ช่วงบ่ายมีอะไรบ้าง", "size": "lg", "color": "#ffffff", "weight": "bold", "align": "center" }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "16px",
+        "contents": [
+          {
+            "type": "button", "style": "primary", "color": "#7A1E3A", "height": "sm",
+            "action": { "type": "uri", "label": "ดูกำหนดการเต็ม", "uri": "https://avoltwedding.worshipnight.life/guide" }
+          },
+          {
+            "type": "box", "layout": "vertical", "backgroundColor": "#EEF2E6", "cornerRadius": "8px", "paddingAll": "12px", "margin": "md",
+            "contents": [
+              { "type": "text", "text": "Note to our loved guest", "size": "xs", "color": "#3B6D11", "weight": "bold", "style": "italic" },
+              { "type": "text", "text": "ช่วงประมาณ 15:00 ถ้าใครอยากได้เครื่องดื่ม รบกวนกดสั่งล่วงหน้าผ่านปุ่มด้านล่างก่อนลงมารับที่ชั้น 1 ของโบสถ์นะคะ ทีมงานตั้งใจทำให้ทีละแก้วแบบสดใหม่ อาจใช้เวลานิดนึงค่ะ", "size": "xxs", "color": "#4a6b2a", "wrap": true, "margin": "sm" }
+            ]
+          },
+          {
+            "type": "box", "layout": "horizontal", "spacing": "sm", "margin": "md",
+            "contents": [
+              { "type": "button", "style": "secondary", "height": "sm", "action": { "type": "uri", "label": "สั่งเครื่องดื่ม", "uri": "https://liff.line.me/2009323052-tvtJa02F" } },
+              { "type": "button", "style": "secondary", "height": "sm", "action": { "type": "uri", "label": "Love Corner", "uri": "https://avoltwedding.worshipnight.life/lovecorner" } }
+            ]
+          },
+          {
+            "type": "box", "layout": "vertical", "backgroundColor": "#FAEEDA", "cornerRadius": "8px", "paddingAll": "12px", "margin": "md",
+            "contents": [
+              { "type": "text", "text": "งานบ่ายเลิกประมาณ 16:00–17:00", "size": "xxs", "color": "#854F0B", "weight": "bold", "wrap": true },
+              { "type": "text", "text": "มีช่วงพักก่อนไปงานเย็นที่ Cloud 11 หาของทานรองท้องแถวนี้ได้ก่อนนะคะ", "size": "xxs", "color": "#854F0B", "wrap": true, "margin": "xs" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }
