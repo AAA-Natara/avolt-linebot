@@ -41,7 +41,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "คืนแห่ง LIVE Music",
+        "text": " LIVE Music Night",
         "size": "sm",
         "color": "#666666",
         "align": "center",
@@ -71,7 +71,7 @@
           },
           {
             "type": "text",
-            "text": "·  LIVE Music",
+            "text": "·  LIVE Music and Worship Night",
             "size": "sm",
             "color": "#555555",
             "wrap": true
@@ -107,7 +107,7 @@
         "margin": "lg",
         "action": {
           "type": "uri",
-          "label": "โปรแกรมค่ำ",
+          "label": "กำหนดการงานเย็น",
           "uri": "https://avoltwedding.worshipnight.life/guide"
         }
       },
@@ -118,7 +118,7 @@
         "margin": "sm",
         "action": {
           "type": "uri",
-          "label": "โสดหรือมีแฟนแล้ว?",
+          "label": "แชร์หน่อย! มาคนเดียวหรือมาเป็นคู่",
           "uri": "https://avoltwedding.worshipnight.life/lovecorner"
         }
       },
@@ -140,7 +140,7 @@
       },
       {
         "type": "text",
-        "text": "หากผิดพลาดประการใด ขออภัยด้วยนะคะ",
+        "text": "หากผิดพลาดประการใด ขออภัยด้วยนะคะ พระเจ้าอวยพรค่ะ",
         "size": "xs",
         "color": "#8FA876",
         "align": "center",
