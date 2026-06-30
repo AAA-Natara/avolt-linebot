@@ -33,7 +33,7 @@
       },
       {
         "type": "text",
-        "text": "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเราค่ะ วันนี้เราเตรียมหลายอย่างไว้ให้ทุกท่าน",
+        "text": "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเรา",
         "size": "sm",
         "color": "#888888",
         "align": "center",
@@ -48,7 +48,7 @@
         "margin": "lg",
         "action": {
           "type": "uri",
-          "label": "เปิดสูจิบัตรงาน",
+          "label": "สูจิบัตรงาน",
           "uri": "https://avoltwedding.worshipnight.life/guide"
         }
       },
@@ -64,7 +64,7 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "Love Corner",
+              "label": "Love Corner : แชร์รูปและเรื่องราว",
               "uri": "https://avoltwedding.worshipnight.life/lovecorner"
             }
           },
@@ -74,7 +74,7 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "Market",
+              "label": "Market : ฝากร้าน ฝากผลงาน",
               "uri": "https://avoltwedding.worshipnight.life/market"
             }
           }
