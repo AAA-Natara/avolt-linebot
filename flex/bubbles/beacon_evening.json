@@ -1,0 +1,106 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#4B1528",
+    "paddingAll": "20px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "THE PARTY · 7 PM",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "ร่วมเฉลิมฉลองช่วงค่ำ",
+        "size": "lg",
+        "color": "#ffffff",
+        "weight": "bold",
+        "align": "center",
+        "margin": "sm"
+      },
+      {
+        "type": "text",
+        "text": "Cloud 11 · Melt Livehouse",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "margin": "xs"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ค่ำคืนแห่งดนตรีและการเฉลิมฉลอง เราขอเชิญทุกท่านเดินทางไปต่อด้วยกันที่ Cloud 11 ค่ะ",
+        "size": "sm",
+        "color": "#888888",
+        "align": "center",
+        "wrap": true
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#7A1E3A",
+        "height": "sm",
+        "margin": "lg",
+        "action": {
+          "type": "uri",
+          "label": "ดูวิธีเดินทาง · ที่จอดรถ",
+          "uri": "https://avoltwedding.worshipnight.life/guide"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "margin": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "เปิดแผนที่",
+              "uri": "https://maps.app.goo.gl/9uX2JUDeSztADabW8"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "โปรแกรมค่ำ",
+              "uri": "https://avoltwedding.worshipnight.life/guide"
+            }
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "text",
+        "text": "แล้วพบกันที่งานเลี้ยงค่ำนะคะ",
+        "size": "xs",
+        "color": "#8FA876",
+        "align": "center",
+        "style": "italic",
+        "margin": "md"
+      }
+    ]
+  }
+}

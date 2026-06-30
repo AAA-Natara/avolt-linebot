@@ -1,0 +1,118 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#7A1E3A",
+    "paddingAll": "20px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "THE VOWS · 1 PM",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "พิธีมงคลสมรส",
+        "size": "lg",
+        "color": "#ffffff",
+        "weight": "bold",
+        "align": "center",
+        "margin": "sm"
+      },
+      {
+        "type": "text",
+        "text": "คริสตจักรสดุดี กรุงเทพ",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "margin": "xs"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ช่วงบ่ายเป็นพิธีคำสาบานและการเฉลิมฉลองเล็ก ๆ ขอเรียนเชิญทุกท่านร่วมเป็นสักขีพยานค่ะ",
+        "size": "sm",
+        "color": "#888888",
+        "align": "center",
+        "wrap": true
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#7A1E3A",
+        "height": "sm",
+        "margin": "lg",
+        "action": {
+          "type": "uri",
+          "label": "ดูกำหนดการช่วงบ่าย",
+          "uri": "https://avoltwedding.worshipnight.life/guide"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "margin": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "สั่งเครื่องดื่ม",
+              "uri": "https://liff.line.me/2009323052-tvtJa02F"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "Love Corner",
+              "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+            }
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#FAEEDA",
+        "cornerRadius": "8px",
+        "paddingAll": "12px",
+        "margin": "lg",
+        "contents": [
+          {
+            "type": "text",
+            "text": "งานบ่ายเลิกประมาณ 16:00–17:00",
+            "size": "xs",
+            "color": "#854F0B",
+            "weight": "bold",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "มีช่วงพักก่อนไปงานเย็นที่ Cloud 11 หาของทานรองท้องแถวนี้ได้ก่อนนะคะ",
+            "size": "xs",
+            "color": "#854F0B",
+            "wrap": true,
+            "margin": "xs"
+          }
+        ]
+      }
+    ]
+  }
+}

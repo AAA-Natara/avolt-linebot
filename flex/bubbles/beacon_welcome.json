@@ -1,0 +1,98 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "hero": {
+    "type": "image",
+    "url": "https://avoltwedding.worshipnight.life/pre/3.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "20px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "WELCOME",
+        "size": "xs",
+        "color": "#7A1E3A",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "ยินดีต้อนรับ {{FIRST_NAME}}",
+        "size": "lg",
+        "weight": "bold",
+        "align": "center",
+        "color": "#333333",
+        "margin": "sm",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "ขอบคุณที่มาร่วมเป็นส่วนหนึ่งในวันสำคัญของเราค่ะ วันนี้เราเตรียมหลายอย่างไว้ให้ทุกท่าน",
+        "size": "sm",
+        "color": "#888888",
+        "align": "center",
+        "wrap": true,
+        "margin": "md"
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#7A1E3A",
+        "height": "sm",
+        "margin": "lg",
+        "action": {
+          "type": "uri",
+          "label": "เปิดสูจิบัตรงาน",
+          "uri": "https://avoltwedding.worshipnight.life/guide"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "spacing": "sm",
+        "margin": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "Love Corner",
+              "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "Market",
+              "uri": "https://avoltwedding.worshipnight.life/market"
+            }
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "text",
+        "text": "#AVoltFlowTogether",
+        "size": "xs",
+        "color": "#8E5A6B",
+        "align": "center",
+        "margin": "md"
+      }
+    ]
+  }
+}
