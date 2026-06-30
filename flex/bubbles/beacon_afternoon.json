@@ -70,7 +70,7 @@
         "backgroundColor": "#8E5A6B",
         "paddingAll": "18px",
         "contents": [
-          { "type": "text", "text": "ช่วงบ่ายมีอะไรบ้าง", "size": "lg", "color": "#ffffff", "weight": "bold", "align": "center" }
+          { "type": "text", "text": "กำหนดการช่วงบ่าย", "size": "lg", "color": "#ffffff", "weight": "bold", "align": "center" }
         ]
       },
       "body": {
