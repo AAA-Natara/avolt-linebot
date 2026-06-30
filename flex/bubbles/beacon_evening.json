@@ -17,8 +17,8 @@
       },
       {
         "type": "text",
-        "text": "ร่วมเฉลิมฉลองช่วงค่ำ",
-        "size": "lg",
+        "text": "Celebration",
+        "size": "xl",
         "color": "#ffffff",
         "weight": "bold",
         "align": "center",
@@ -41,11 +41,63 @@
     "contents": [
       {
         "type": "text",
-        "text": "ค่ำคืนแห่งดนตรีและการเฉลิมฉลอง เราขอเชิญทุกท่านเดินทางไปต่อด้วยกันที่ Cloud 11 ค่ะ",
+        "text": "คืนแห่ง LIVE Music",
+        "size": "sm",
+        "color": "#666666",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "ขอเรียนเชิญทุกท่านร่วมสนุกไปด้วยกัน",
         "size": "sm",
         "color": "#888888",
         "align": "center",
-        "wrap": true
+        "wrap": true,
+        "margin": "xs"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ภายในงานค่ำ",
+            "size": "xs",
+            "color": "#7A1E3A",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "·  LIVE Music",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "·  เครื่องดื่ม · ของว่างเล็กน้อย",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "·  อย่าลืม BYOB นำเครื่องดื่มที่ชอบมาด้วยนะ",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "·  เฉลิมฉลองด้วยกัน",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true
+          }
+        ]
       },
       {
         "type": "button",
@@ -55,37 +107,31 @@
         "margin": "lg",
         "action": {
           "type": "uri",
-          "label": "ดูวิธีเดินทาง · ที่จอดรถ",
+          "label": "โปรแกรมค่ำ",
           "uri": "https://avoltwedding.worshipnight.life/guide"
         }
       },
       {
-        "type": "box",
-        "layout": "horizontal",
-        "spacing": "sm",
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
         "margin": "sm",
-        "contents": [
-          {
-            "type": "button",
-            "style": "secondary",
-            "height": "sm",
-            "action": {
-              "type": "uri",
-              "label": "เปิดแผนที่",
-              "uri": "https://maps.app.goo.gl/9uX2JUDeSztADabW8"
-            }
-          },
-          {
-            "type": "button",
-            "style": "secondary",
-            "height": "sm",
-            "action": {
-              "type": "uri",
-              "label": "โปรแกรมค่ำ",
-              "uri": "https://avoltwedding.worshipnight.life/guide"
-            }
-          }
-        ]
+        "action": {
+          "type": "uri",
+          "label": "โสดหรือมีแฟนแล้ว?",
+          "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+        }
+      },
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "margin": "sm",
+        "action": {
+          "type": "uri",
+          "label": "ฝากร้าน ฝากผลงาน",
+          "uri": "https://avoltwedding.worshipnight.life/market"
+        }
       },
       {
         "type": "separator",
@@ -94,12 +140,13 @@
       },
       {
         "type": "text",
-        "text": "แล้วพบกันที่งานเลี้ยงค่ำนะคะ",
+        "text": "หากผิดพลาดประการใด ขออภัยด้วยนะคะ",
         "size": "xs",
         "color": "#8FA876",
         "align": "center",
         "style": "italic",
-        "margin": "md"
+        "margin": "md",
+        "wrap": true
       }
     ]
   }
