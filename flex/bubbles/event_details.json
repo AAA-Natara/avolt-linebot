@@ -273,26 +273,48 @@
           {
             "type": "text",
             "text": "ธีมการแต่งกาย",
-            "weight": "bold"
+            "weight": "bold",
+            "flex": 0
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "height": "24px",
+            "cornerRadius": "12px",
+            "backgroundColor": "#7A2E3A",
+            "contents": [{ "type": "filler" }]
           },
           {
-            "type": "icon",
-            "url": "https://avoltwedding.worshipnight.life/c1.png"
+            "type": "box",
+            "layout": "vertical",
+            "height": "24px",
+            "cornerRadius": "12px",
+            "backgroundColor": "#8E5A6B",
+            "contents": [{ "type": "filler" }]
           },
           {
-            "type": "icon",
-            "url": "https://avoltwedding.worshipnight.life/c2.png",
-            "margin": "sm"
+            "type": "box",
+            "layout": "vertical",
+            "height": "24px",
+            "cornerRadius": "12px",
+            "backgroundColor": "#8FA876",
+            "contents": [{ "type": "filler" }]
           },
           {
-            "type": "icon",
-            "url": "https://avoltwedding.worshipnight.life/c3.png",
-            "margin": "sm"
-          },
-          {
-            "type": "icon",
-            "url": "https://avoltwedding.worshipnight.life/c4.png",
-            "margin": "sm"
+            "type": "box",
+            "layout": "vertical",
+            "height": "24px",
+            "cornerRadius": "12px",
+            "backgroundColor": "#E3D9B0",
+            "contents": [{ "type": "filler" }]
           }
         ]
       },
