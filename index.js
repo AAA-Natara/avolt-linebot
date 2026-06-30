@@ -89,7 +89,52 @@ const FLEX = {
   blessing: () => loadJsonWithFallback("flex/bubbles/blessing.json"),
   confirm: () => loadJsonWithFallback("flex/bubbles/confirm.json"),
   gift: () => loadJsonWithFallback("flex/bubbles/gift.json"),
+  beaconWelcome: () => loadJsonWithFallback("flex/bubbles/beacon_welcome.json"),
+  beaconAfternoon: () => loadJsonWithFallback("flex/bubbles/beacon_afternoon.json"),
+  beaconEvening: () => loadJsonWithFallback("flex/bubbles/beacon_evening.json"),
 };
+
+// ========== Beacon helpers ==========
+// แทน placeholder ใน Flex JSON (เช่น {{FIRST_NAME}})
+function renderTemplate(bubbleJson, vars = {}) {
+  let str = JSON.stringify(bubbleJson);
+  for (const [key, val] of Object.entries(vars)) {
+    const safe = String(val).replace(/"/g, '\\"');
+    str = str.split(`{{${key}}}`).join(safe);
+  }
+  return JSON.parse(str);
+}
+
+// วันที่ปัจจุบันแบบเวลาไทย (YYYY-MM-DD) ใช้เป็น sent_date
+function todayBangkok() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" });
+}
+
+// ชั่วโมงปัจจุบันแบบเวลาไทย (0–23)
+function hourBangkok() {
+  const h = new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Bangkok",
+    hour: "2-digit",
+    hour12: false,
+  });
+  return parseInt(h, 10);
+}
+
+// พยายามบันทึก log ว่าส่งการ์ดนี้แล้ววันนี้
+// คืน true = ยังไม่เคยส่ง (ส่งได้) / false = เคยส่งแล้ววันนี้ (ข้าม)
+async function claimBeaconCard(userId, cardType) {
+  const { error } = await supabase
+    .from("beacon_logs")
+    .insert([{ user_id: userId, card_type: cardType, sent_date: todayBangkok() }]);
+
+  if (error) {
+    // 23505 = unique violation = เคยส่งแล้ววันนี้
+    if (error.code === "23505") return false;
+    console.error("[BEACON] claim error:", error.message || error);
+    return false; // error อื่น ๆ กันส่งซ้ำไว้ก่อน
+  }
+  return true;
+}
 
 // ========== In-memory session ==========
 /**
@@ -193,14 +238,6 @@ function isNumberLike(text) {
 
 const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
 
-const beaconSentMap = new Map();
-
-function canSendBeacon(userId) {
-  const last = beaconSentMap.get(userId);
-  if (!last) return true;
-  return (Date.now() - last) > 24*60*60*1000;
-}
-
 
 async function handleEvent(event) {
 
@@ -212,32 +249,41 @@ async function handleEvent(event) {
     if (!userId) return;
     if (event.beacon.hwid !== BEACON_HWID) return;
     if (event.beacon.type !== "enter") return;
-    if (!canSendBeacon(userId)) {
-      console.log(`[BEACON] ${userId} — skip`);
-      return;
-    }
-    beaconSentMap.set(userId, Date.now());
+
+    const hour = hourBangkok();
+    const messages = [];
+
     try {
       const profile = await client.getProfile(userId);
-const firstName = profile.displayName;
- await client.pushMessage(userId, {
-  type: "text",
-  text:
-    `ยินดีต้อนรับสู่ AVOLT Home \nคุณ${firstName} ♡♡ \n\n` +
-    ` WiFi: WorshipHome\n` +
-    `🔑 Password: PRAISE247\n\n` +
-    ` ♡ น้ำอยู่ในตู้เย็น เดินไปหยิบได้เลยนะคะ\n\n` +
-    `🎮 บนตู้ทีวีมี\n` +
-    `   · PS5\n` +
-    `   · Nintendo\n` +
-    `   · Board games\n` +
-    `อยากเล่นไรหยิบมาได้เลย อย่าปาทิ้งก็พอ 55555\n\n` +
-    `"เหตุฉะนั้น จงต้อนรับกันและกัน เหมือนอย่างที่พระคริสต์ทรงรับพวกท่าน"\n` +
-    `— โรม 15:7 `,
-});
-      console.log(`[BEACON] Welcome → ${firstName}`);
+      const firstName = profile.displayName;
+
+      // 1) Welcome อลังการ — ครั้งแรกของวัน
+      if (await claimBeaconCard(userId, "welcome")) {
+        const bubble = renderTemplate(FLEX.beaconWelcome(), {
+          FIRST_NAME: `คุณ${firstName}`,
+        });
+        messages.push(flexMessage(`ยินดีต้อนรับ คุณ${firstName}`, bubble));
+      }
+
+      // 2) ข้อความตามช่วงเวลา (ช่วงละครั้งต่อวัน)
+      if (hour >= 12 && hour < 18) {
+        if (await claimBeaconCard(userId, "afternoon")) {
+          messages.push(flexMessage("กำหนดการช่วงบ่าย", FLEX.beaconAfternoon()));
+        }
+      } else if (hour >= 18) {
+        if (await claimBeaconCard(userId, "evening")) {
+          messages.push(flexMessage("ร่วมเฉลิมฉลองช่วงค่ำ", FLEX.beaconEvening()));
+        }
+      }
+
+      if (messages.length > 0) {
+        await client.pushMessage(userId, messages);
+        console.log(`[BEACON] ${firstName} → ส่ง ${messages.length} การ์ด (${hour}:00)`);
+      } else {
+        console.log(`[BEACON] ${firstName} → ได้ครบแล้ววันนี้ (${hour}:00)`);
+      }
     } catch (err) {
-      console.error("[BEACON] Error:", err.message);
+      console.error("[BEACON] Error:", err.message || err);
     }
     return;
   }
@@ -317,7 +363,16 @@ const firstName = profile.displayName;
         });
       }
 
-      const saved = await upsertRsvp(userId, sess.temp.fullName, n);
+      let saved;
+      try {
+        saved = await upsertRsvp(userId, sess.temp.fullName, n);
+      } catch (e) {
+        console.error("upsertRsvp error:", e.message || e);
+        return client.replyMessage(event.replyToken, {
+          type: "text",
+          text: "ขออภัยค่ะ ตอนนี้บันทึกข้อมูลไม่สำเร็จ ลองใหม่อีกครั้งในอีกสักครู่นะคะ 🙏",
+        });
+      }
       sessions.delete(userId);
 
       return client.replyMessage(event.replyToken, {
@@ -345,7 +400,15 @@ const firstName = profile.displayName;
         });
       }
 
-      await insertBlessing(userId, msg);
+      try {
+        await insertBlessing(userId, msg);
+      } catch (e) {
+        console.error("insertBlessing error:", e.message || e);
+        return client.replyMessage(event.replyToken, {
+          type: "text",
+          text: "ขออภัยค่ะ ตอนนี้บันทึกคำอวยพรไม่สำเร็จ ลองส่งใหม่อีกครั้งนะคะ 🙏",
+        });
+      }
       sessions.delete(userId);
 
       return client.replyMessage(event.replyToken, {
@@ -427,7 +490,12 @@ const firstName = profile.displayName;
 
   // เริ่ม flow RSVP (จากปุ่ม)
   if (text === "ยืนยัน เจอกันแน่นอน" || text === "ยืนยันเจอกันแน่นอน") {
-    const existing = await getRsvp(userId);
+    let existing = null;
+    try {
+      existing = await getRsvp(userId);
+    } catch (e) {
+      console.error("getRsvp error:", e.message || e);
+    }
     if (existing) {
       return client.replyMessage(event.replyToken, {
         type: "text",
