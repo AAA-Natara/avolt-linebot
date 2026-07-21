@@ -187,15 +187,15 @@
               },
               {
                 "type": "text",
-                "text": "Cloud 11 (Melt Livehouse)",
+                "text": "Gaysorn Urban",
                 "wrap": true,
                 "color": "#666666",
                 "size": "sm",
                 "flex": 4,
                 "action": {
-                  "type": "message",
-                  "label": "การเดินทาง",
-                  "text": "การเดินทาง"
+                  "type": "uri",
+                  "label": "แผนที่",
+                  "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
                 }
               }
             ]
