@@ -155,7 +155,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "Cloud 11",
+                "text": "Gaysorn Urban",
                 "size": "xl",
                 "flex": 4,
                 "weight": "bold"
@@ -187,7 +187,7 @@
               },
               {
                 "type": "text",
-                "text": "อุดมสุข / Udomsuk",
+                "text": "ชิดลม / Chit Lom",
                 "gravity": "center",
                 "size": "sm"
               }
@@ -201,14 +201,14 @@
             "contents": [
               {
                 "type": "text",
-                "text": "หรือรถไฟฟ้า BTS",
+                "text": "เดินเชื่อม",
                 "gravity": "top",
                 "weight": "bold",
                 "size": "sm"
               },
               {
                 "type": "text",
-                "text": "ปุณณวิถี / Punnawithi",
+                "text": "Skywalk จาก BTS ถึงตัวอาคารโดยตรง",
                 "gravity": "center",
                 "size": "sm",
                 "wrap": true
@@ -229,7 +229,7 @@
               },
               {
                 "type": "text",
-                "text": "จอดที่ Cloud 11",
+                "text": "จอดที่อาคาร Gaysorn",
                 "gravity": "center",
                 "size": "sm",
                 "wrap": true
@@ -243,7 +243,7 @@
             "action": {
               "type": "uri",
               "label": "แผนที่",
-              "uri": "https://maps.app.goo.gl/nmmQEBFqFRkfU9db7"
+              "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
             },
             "style": "primary",
             "margin": "20px",
