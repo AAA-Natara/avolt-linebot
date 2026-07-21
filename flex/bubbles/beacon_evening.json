@@ -26,7 +26,7 @@
       },
       {
         "type": "text",
-        "text": "Cloud 11 · Melt Livehouse",
+        "text": "Gaysorn Urban",
         "size": "xs",
         "color": "#E3D9B0",
         "align": "center",
@@ -109,6 +109,17 @@
           "type": "uri",
           "label": "กำหนดการงานเย็น",
           "uri": "https://avoltwedding.worshipnight.life/guide"
+        }
+      },
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "margin": "sm",
+        "action": {
+          "type": "uri",
+          "label": "แผนที่ Gaysorn Urban",
+          "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
         }
       },
       {
