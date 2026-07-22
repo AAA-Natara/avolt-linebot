@@ -80,13 +80,13 @@
         "contents": [
           {
             "type": "button", "style": "primary", "color": "#7A1E3A", "height": "sm",
-            "action": { "type": "uri", "label": "ดูกำหนดการเต็ม", "uri": "https://avoltwedding.worshipnight.life/guide" }
+            "action": { "type": "uri", "label": "ดูกำหนดการ", "uri": "https://avoltwedding.worshipnight.life/guide" }
           },
           {
             "type": "box", "layout": "vertical", "backgroundColor": "#EEF2E6", "cornerRadius": "8px", "paddingAll": "12px", "margin": "md",
             "contents": [
               { "type": "text", "text": "Note to our loved guest", "size": "xs", "color": "#3B6D11", "weight": "bold", "style": "italic" },
-              { "type": "text", "text": "ช่วงประมาณ 15:00 ถ้าใครอยากได้เครื่องดื่ม รบกวนกดสั่งล่วงหน้าผ่านปุ่มด้านล่างก่อนลงมารับที่ชั้น 1 ของโบสถ์นะคะ ทีมงานตั้งใจทำให้ทีละแก้วแบบสดใหม่ อาจใช้เวลานิดนึงค่ะ", "size": "xxs", "color": "#4a6b2a", "wrap": true, "margin": "sm" }
+              { "type": "text", "text": "ช่วงประมาณ 14:00 ถ้าใครอยากได้เครื่องดื่ม รบกวนกดสั่งล่วงหน้าผ่านปุ่มด้านล่างก่อนลงมารับที่ชั้น 1 ของโบสถ์นะคะ ทีมงานตั้งใจทำให้ทีละแก้วแบบสดใหม่ อาจใช้เวลาค่ะ แต่เมื่อเครื่องดื่มเสร็จ จะมีแจ้งเตือนทาง LINE นะคะ", "size": "xxs", "color": "#4a6b2a", "wrap": true, "margin": "sm" }
             ]
           },
           {
@@ -99,8 +99,8 @@
           {
             "type": "box", "layout": "vertical", "backgroundColor": "#FAEEDA", "cornerRadius": "8px", "paddingAll": "12px", "margin": "md",
             "contents": [
-              { "type": "text", "text": "งานบ่ายเลิกประมาณ 16:00–17:00", "size": "xxs", "color": "#854F0B", "weight": "bold", "wrap": true },
-              { "type": "text", "text": "มีช่วงพักก่อนไปงานเย็นที่ Cloud 11 หาของทานรองท้องแถวนี้ได้ก่อนนะคะ", "size": "xxs", "color": "#854F0B", "wrap": true, "margin": "xs" }
+              { "type": "text", "text": "งานบ่ายเลิกประมาณ 16:00", "size": "xxs", "color": "#854F0B", "weight": "bold", "wrap": true },
+              { "type": "text", "text": "มีช่วงพักก่อนไปงานเย็นที่ Gaysorn Urban Resort แวะหาไรกินก่อนด้วยนะ", "size": "xxs", "color": "#854F0B", "wrap": true, "margin": "xs" }
             ]
           }
         ]
