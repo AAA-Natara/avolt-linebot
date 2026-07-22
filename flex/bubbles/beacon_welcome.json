@@ -33,7 +33,7 @@
       },
       {
         "type": "text",
-        "text": "ขอบคุณที่มาร่วมในวันสำคัญของเรา",
+        "text": "ดีใจมากที่ได้เจอกันในวันสำคัญที่สุดของเรา ขอบคุณที่สละเวลามาร่วมเป็นพยานรักในวันสำคัญของเราทั้งสองคน :)",
         "size": "sm",
         "color": "#888888",
         "align": "center",
@@ -41,32 +41,129 @@
         "margin": "md"
       },
       {
-        "type": "button",
-        "style": "primary",
-        "color": "#7A1E3A",
-        "height": "sm",
+        "type": "box",
+        "layout": "vertical",
         "margin": "lg",
-        "action": {
-          "type": "uri",
-          "label": "สูจิบัตรงาน",
-          "uri": "https://avoltwedding.worshipnight.life/guide"
-        }
+        "paddingAll": "14px",
+        "cornerRadius": "10px",
+        "backgroundColor": "#FAF6EA",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "กำหนดการวันนี้",
+            "size": "xs",
+            "weight": "bold",
+            "color": "#7A1E3A"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "13:00",
+                "size": "sm",
+                "weight": "bold",
+                "color": "#7A1E3A",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "VOW Ceremony ที่คริสตจักรสดุดี",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 7
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "19:00",
+                "size": "sm",
+                "weight": "bold",
+                "color": "#7A1E3A",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "Celebration ที่ Gaysorn Urban Resort",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 7
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": " ",
+                "size": "xs",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "ชั้น 19",
+                "size": "xs",
+                "weight": "bold",
+                "color": "#8FA876",
+                "wrap": true,
+                "flex": 7
+              }
+            ]
+          }
+        ]
       },
       {
         "type": "box",
         "layout": "vertical",
-        "spacing": "sm",
-        "margin": "sm",
+        "margin": "lg",
+        "spacing": "xs",
         "contents": [
           {
+            "type": "text",
+            "text": "ลำดับพิธี เพลง และเรื่องราวของเรา",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "wrap": true
+          },
+          {
             "type": "button",
-            "style": "secondary",
+            "style": "primary",
+            "color": "#7A1E3A",
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "แชร์รูปและเรื่องราว",
-              "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+              "label": "สูจิบัตรงาน",
+              "uri": "https://avoltwedding.worshipnight.life/guide"
             }
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "xs",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ฝากคำอวยพรถึงเราทั้งสองคน เก็บไว้เป็นความทรงจำตลอดไป",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "wrap": true
           },
           {
             "type": "button",
@@ -74,8 +171,8 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "ฝากร้าน ฝากผลงาน",
-              "uri": "https://avoltwedding.worshipnight.life/market"
+              "label": "ฝากคำอวยพร / Blessing",
+              "uri": "https://avoltwedding.worshipnight.life/blessing/"
             }
           }
         ]
