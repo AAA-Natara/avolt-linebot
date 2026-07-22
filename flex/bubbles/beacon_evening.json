@@ -17,7 +17,7 @@
       },
       {
         "type": "text",
-        "text": "Celebration",
+        "text": "เย้! มาถึงงานแล้ว",
         "size": "xl",
         "color": "#ffffff",
         "weight": "bold",
@@ -26,7 +26,7 @@
       },
       {
         "type": "text",
-        "text": "Gaysorn Urban Resort",
+        "text": "ดีใจที่มาร่วมงาน A & VOLT :)",
         "size": "xs",
         "color": "#E3D9B0",
         "align": "center",
@@ -40,62 +40,133 @@
     "paddingAll": "18px",
     "contents": [
       {
-        "type": "text",
-        "text": " LIVE Music Night",
-        "size": "sm",
-        "color": "#666666",
-        "align": "center",
-        "weight": "bold"
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "●",
+                "size": "xxs",
+                "color": "#7A1E3A",
+                "flex": 0
+              },
+              {
+                "type": "text",
+                "text": "นำเครื่องดื่มมา ฝากไว้ที่จุดบาร์ได้เลย",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "●",
+                "size": "xxs",
+                "color": "#8E5A6B",
+                "flex": 0
+              },
+              {
+                "type": "text",
+                "text": "มีอาหารว่างเตรียมไว้ต้อนรับอยู่ในงาน",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "●",
+                "size": "xxs",
+                "color": "#8FA876",
+                "flex": 0
+              },
+              {
+                "type": "text",
+                "text": "แวะ Photobooth ถ่ายรูปด้วยนะ :)",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "●",
+                "size": "xxs",
+                "color": "#E3D9B0",
+                "flex": 0
+              },
+              {
+                "type": "text",
+                "text": "tag พวกเราด้วยนะ @aaeaa_ และ @voltjingjit",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true
+              }
+            ]
+          }
+        ]
       },
       {
         "type": "text",
-        "text": "ขอเรียนเชิญทุกท่านร่วมสนุกไปด้วยกัน",
-        "size": "sm",
-        "color": "#888888",
-        "align": "center",
+        "text": "ด้านนอกตรงโซน terrace มีน้ำอยู่ ระวังตกน้ำนะ",
+        "size": "xs",
+        "color": "#8E5A6B",
+        "style": "italic",
         "wrap": true,
-        "margin": "xs"
+        "margin": "md"
       },
       {
         "type": "box",
         "layout": "vertical",
         "margin": "lg",
-        "spacing": "md",
+        "paddingAll": "14px",
+        "cornerRadius": "10px",
+        "backgroundColor": "#FAF6EA",
+        "spacing": "xs",
+        "action": {
+          "type": "uri",
+          "label": "Love Corner",
+          "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+        },
         "contents": [
           {
             "type": "text",
-            "text": "ภายในงานค่ำ",
-            "size": "xs",
+            "text": "คืนนี้มาคนเดียวหรือมาเป็นคู่?",
+            "size": "sm",
+            "weight": "bold",
             "color": "#7A1E3A",
-            "weight": "bold"
+            "align": "center"
           },
           {
             "type": "text",
-            "text": "·  LIVE Music and Worship Night",
-            "size": "sm",
-            "color": "#555555",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "·  เครื่องดื่ม · ของว่างเล็กน้อย",
-            "size": "sm",
-            "color": "#555555",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "·  อย่าลืม BYOB นำเครื่องดื่มที่ชอบมาด้วยนะ",
-            "size": "sm",
-            "color": "#555555",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "·  เฉลิมฉลองด้วยกัน",
-            "size": "sm",
-            "color": "#555555",
-            "wrap": true
+            "text": "บอกเราหน่อย แตะตรงนี้เลย",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "align": "center"
           }
         ]
       },
@@ -107,42 +178,37 @@
         "margin": "lg",
         "action": {
           "type": "uri",
-          "label": "กำหนดการงานเย็น",
-          "uri": "https://avoltwedding.worshipnight.life/guide"
+          "label": "ฝากคำอวยพร",
+          "uri": "https://avoltwedding.worshipnight.life/blessing/"
         }
       },
       {
-        "type": "button",
-        "style": "secondary",
-        "height": "sm",
+        "type": "box",
+        "layout": "horizontal",
         "margin": "sm",
-        "action": {
-          "type": "uri",
-          "label": "แผนที่ Gaysorn Urban Resort",
-          "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
-        }
-      },
-      {
-        "type": "button",
-        "style": "secondary",
-        "height": "sm",
-        "margin": "sm",
-        "action": {
-          "type": "uri",
-          "label": "แชร์หน่อย! มาคนเดียวหรือมาเป็นคู่",
-          "uri": "https://avoltwedding.worshipnight.life/lovecorner"
-        }
-      },
-      {
-        "type": "button",
-        "style": "secondary",
-        "height": "sm",
-        "margin": "sm",
-        "action": {
-          "type": "uri",
-          "label": "ฝากร้าน ฝากผลงาน",
-          "uri": "https://avoltwedding.worshipnight.life/market"
-        }
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "กำหนดการ",
+              "uri": "https://avoltwedding.worshipnight.life/guide"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "มาฝากร้าน",
+              "uri": "https://avoltwedding.worshipnight.life/market"
+            }
+          }
+        ]
       },
       {
         "type": "separator",
@@ -151,13 +217,11 @@
       },
       {
         "type": "text",
-        "text": "หากผิดพลาดประการใด ขออภัยด้วยนะคะ",
+        "text": "ขอให้สนุกกับคืนนี้ พระเจ้าอวยพรนะคะ",
         "size": "xs",
         "color": "#8FA876",
         "align": "center",
-        "style": "italic",
-        "margin": "md",
-        "wrap": true
+        "margin": "md"
       }
     ]
   }
