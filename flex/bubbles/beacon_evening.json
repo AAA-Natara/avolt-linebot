@@ -26,7 +26,7 @@
       },
       {
         "type": "text",
-        "text": "Gaysorn Urban",
+        "text": "Gaysorn Urban Resort",
         "size": "xs",
         "color": "#E3D9B0",
         "align": "center",
@@ -118,7 +118,7 @@
         "margin": "sm",
         "action": {
           "type": "uri",
-          "label": "แผนที่ Gaysorn Urban",
+          "label": "แผนที่ Gaysorn Urban Resort",
           "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
         }
       },
