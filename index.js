@@ -92,6 +92,25 @@ const FLEX = {
   beaconWelcome: () => loadJsonWithFallback("flex/bubbles/beacon_welcome.json"),
   beaconAfternoon: () => loadJsonWithFallback("flex/bubbles/beacon_afternoon.json"),
   beaconEvening: () => loadJsonWithFallback("flex/bubbles/beacon_evening.json"),
+
+  // ===== เมนูใหม่ (rich menu 2026-07) =====
+  wishesHub: () => loadJsonWithFallback("flex/bubbles/wishes_hub.json"),
+  afternoon: () => loadJsonWithFallback("flex/bubbles/afternoon.json"),
+  evening: () => loadJsonWithFallback("flex/bubbles/evening.json"),
+  thingsToDo: () => loadJsonWithFallback("flex/bubbles/things_to_do.json"),
+};
+
+// คำอวยพรเก็บที่เดียว: หน้าเว็บ /blessing/
+const BLESSING_URL = "https://avoltwedding.worshipnight.life/blessing/";
+
+// ===== Rich menu router =====
+// key = ข้อความที่ rich menu ส่งเข้ามา (action type: message)
+// value = [ชื่อ FLEX, altText]
+const MENU_ROUTES = {
+  "อวยพรและของขวัญ": ["wishesHub", "คำอวยพร และ ของขวัญ"],
+  "งานช่วงบ่าย": ["afternoon", "งานช่วงบ่าย · พิธีมงคลสมรส"],
+  "งานช่วงเย็น": ["evening", "งานช่วงเย็น · Gaysorn Urban Resort"],
+  "กิจกรรมในงาน": ["thingsToDo", "กิจกรรมในงาน"],
 };
 
 // ========== Beacon helpers ==========
@@ -188,7 +207,54 @@ async function insertBlessing(userId, message) {
 // ========== Debug routes ==========
 app.get("/", (req, res) => res.send("OK"));
 
+// SECURITY: repo เป็น public และ URL ของ Render อยู่ในโค้ด
+// route ที่คืนข้อมูลแขกต้องมี ADMIN_KEY เสมอ
+const ADMIN_KEY = process.env.ADMIN_KEY;
+
+function requireAdmin(req, res) {
+  if (!ADMIN_KEY) {
+    res.status(503).json({ ok: false, message: "ADMIN_KEY not set" });
+    return false;
+  }
+  if (req.query.key !== ADMIN_KEY) {
+    res.status(404).end();
+    return false;
+  }
+  return true;
+}
+
+// export คำอวยพรที่เก็บผ่านแชทไว้ก่อนหน้า เพื่อย้ายไปรวมกับ /blessing/
+// GET /export-blessings?key=xxx        -> JSON
+// GET /export-blessings?key=xxx&f=csv  -> CSV
+app.get("/export-blessings", async (req, res) => {
+  if (!requireAdmin(req, res)) return;
+  try {
+    const { data, error } = await supabase
+      .from("blessings")
+      .select("*")
+      .order("created_at", { ascending: true });
+    if (error) return res.status(500).json({ ok: false, error });
+
+    if (req.query.f === "csv") {
+      const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+      const cols = data.length ? Object.keys(data[0]) : ["id", "user_id", "message"];
+      const csv = [
+        cols.join(","),
+        ...data.map((r) => cols.map((c) => esc(r[c])).join(",")),
+      ].join("\n");
+      res.setHeader("Content-Type", "text/csv; charset=utf-8");
+      res.setHeader("Content-Disposition", 'attachment; filename="blessings.csv"');
+      return res.send("\uFEFF" + csv); // BOM กัน Excel อ่านภาษาไทยเพี้ยน
+    }
+
+    return res.json({ ok: true, count: data.length, rows: data });
+  } catch (e) {
+    return res.status(500).json({ ok: false, message: e.message || String(e) });
+  }
+});
+
 app.get("/test-db", async (req, res) => {
+  if (!requireAdmin(req, res)) return;
   try {
     const hasUrl = !!process.env.SUPABASE_URL;
     const hasKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -382,15 +448,19 @@ async function handleEvent(event) {
           `เราจะเตรียมที่นั่ง/การต้อนรับ ✅\n` +
           `ชื่อ: ${saved.full_name}\n` +
           `จำนวน: ${saved.guests_count} คน\n\n` +
-          `พิมพ์ดูข้อมูลได้เลย:\n` +
+          `ดูข้อมูลเพิ่มเติมได้ที่เมนูด้านล่างเลยนะคะ\n` +
+          `หรือพิมพ์ก็ได้ค่ะ:\n` +
           `- รายละเอียดงาน\n` +
-          `- การเดินทาง\n` +
-          `- คำอวยพร\n` +
-          `- ของขวัญ`,
+          `- งานช่วงบ่าย\n` +
+          `- งานช่วงเย็น\n` +
+          `- กิจกรรมในงาน\n` +
+          `- อวยพรและของขวัญ`,
       });
     }
 
-    // ASK_BLESSING
+    // ASK_BLESSING (legacy)
+    // ไม่มีทางเข้าใหม่แล้ว เหลือไว้กันคนที่ค้าง session ตอน deploy
+    // ยังบันทึกลง Supabase เหมือนเดิม แล้วชี้ต่อไปหน้าเว็บ
     if (sess.step === "ASK_BLESSING") {
       const msg = text;
       if (msg.length < 2) {
@@ -419,6 +489,23 @@ async function handleEvent(event) {
   }
 
   // ===== 2) คำสั่งหลัก (ข้อความ) =====
+
+  // --- ปุ่มจาก rich menu ชุดใหม่ ---
+  if (MENU_ROUTES[text]) {
+    const [flexKey, altText] = MENU_ROUTES[text];
+    try {
+      return client.replyMessage(
+        event.replyToken,
+        flexMessage(altText, FLEX[flexKey]())
+      );
+    } catch (e) {
+      console.error(`Flex ${flexKey} load error:`, e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้เปิดการ์ดนี้ไม่ได้ ลองใหม่อีกครั้งนะคะ 🙏",
+      });
+    }
+  }
 
   // รายละเอียดงาน
   if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
@@ -465,12 +552,12 @@ async function handleEvent(event) {
     }
   }
 
-  // กดปุ่ม "อวยพร"
+  // กดปุ่ม "อวยพร" — ปุ่มเก่าจากการ์ดที่ส่งไปแล้ว
+  // ไม่เก็บผ่านแชทอีกต่อไป ส่งไปหน้าเว็บ /blessing/ ที่เดียว
   if (text === "อวยพร") {
-    sessions.set(userId, { step: "ASK_BLESSING", temp: {} });
     return client.replyMessage(event.replyToken, {
       type: "text",
-      text: "พิมพ์คำอวยพรของคุณได้เลยนะคะ 🤍 (ส่งมาเป็น 1 ข้อความได้เลย)",
+      text: "ตอนนี้ย้ายไปเขียนคำอวยพรที่หน้านี้แล้วนะคะ 🤍\n" + BLESSING_URL,
     });
   }
 
@@ -564,10 +651,14 @@ async function handleEvent(event) {
       text:
         "พิมพ์คำสั่งได้เลยค่ะ:\n" +
         "- รายละเอียดงาน\n" +
-        "- การเดินทาง\n" +
         "- ยืนยันมาร่วมงาน\n" +
+        "- งานช่วงบ่าย\n" +
+        "- งานช่วงเย็น\n" +
+        "- กิจกรรมในงาน\n" +
+        "- อวยพรและของขวัญ\n" +
         "- คำอวยพร\n" +
-        "- ของขวัญ",
+        "- ของขวัญ\n" +
+        "- การเดินทาง",
     });
   }
 
