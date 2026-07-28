@@ -9,28 +9,40 @@
     "contents": [
       {
         "type": "text",
-        "text": "CELEBRATION · SAT 1 AUG",
+        "text": "CELEBRATION · SATURDAY 1 AUGUST",
         "size": "xs",
         "color": "#E3D9B0",
         "align": "center",
-        "weight": "bold"
+        "weight": "bold",
+        "wrap": true
       },
       {
         "type": "text",
-        "text": "งานเลี้ยงฉลอง",
+        "text": "งานเลี้ยงฉลองมงคลสมรส",
         "size": "lg",
         "color": "#ffffff",
         "align": "center",
         "weight": "bold",
-        "margin": "sm"
+        "margin": "sm",
+        "wrap": true
       },
       {
         "type": "text",
-        "text": "Gaysorn Urban Resort ชั้น 19",
+        "text": "The Evening Celebration",
         "size": "xs",
         "color": "#E3D9B0",
         "align": "center",
-        "margin": "xs"
+        "margin": "xs",
+        "style": "italic"
+      },
+      {
+        "type": "text",
+        "text": "Gaysorn Urban Resort ชั้น 19 · 19th Floor",
+        "size": "xxs",
+        "color": "#C9A9A6",
+        "align": "center",
+        "margin": "md",
+        "wrap": true
       }
     ]
   },
@@ -40,17 +52,31 @@
     "paddingAll": "18px",
     "contents": [
       {
-        "type": "text",
-        "text": "กำหนดเวลา",
-        "size": "xs",
-        "color": "#8E5A6B",
-        "weight": "bold"
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "contents": [
+          {
+            "type": "text",
+            "text": "กำหนดการ",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "Schedule",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "style": "italic"
+          }
+        ]
       },
       {
         "type": "box",
         "layout": "vertical",
         "margin": "md",
-        "spacing": "md",
+        "spacing": "lg",
         "contents": [
           {
             "type": "box",
@@ -58,20 +84,47 @@
             "spacing": "md",
             "contents": [
               {
-                "type": "text",
-                "text": "18:00 น.",
-                "size": "sm",
-                "color": "#7A1E3A",
-                "weight": "bold",
-                "flex": 2
+                "type": "box",
+                "layout": "vertical",
+                "flex": 2,
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "18:00 น.",
+                    "size": "sm",
+                    "color": "#7A1E3A",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "6:00 PM",
+                    "size": "xxs",
+                    "color": "#8E5A6B"
+                  }
+                ]
               },
               {
-                "type": "text",
-                "text": "เปิดให้เข้างาน",
-                "size": "sm",
-                "color": "#555555",
-                "wrap": true,
-                "flex": 5
+                "type": "box",
+                "layout": "vertical",
+                "flex": 5,
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "เปิดให้เข้าร่วมงาน",
+                    "size": "sm",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "Doors open.",
+                    "size": "xxs",
+                    "color": "#777777",
+                    "style": "italic",
+                    "wrap": true
+                  }
+                ]
               }
             ]
           },
@@ -81,103 +134,51 @@
             "spacing": "md",
             "contents": [
               {
-                "type": "text",
-                "text": "19:00 น.",
-                "size": "sm",
-                "color": "#7A1E3A",
-                "weight": "bold",
-                "flex": 2
+                "type": "box",
+                "layout": "vertical",
+                "flex": 2,
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "19:00 น.",
+                    "size": "sm",
+                    "color": "#7A1E3A",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "7:00 PM",
+                    "size": "xxs",
+                    "color": "#8E5A6B"
+                  }
+                ]
               },
               {
-                "type": "text",
-                "text": "เริ่มงานเลี้ยง",
-                "size": "sm",
-                "color": "#555555",
-                "wrap": true,
-                "flex": 5
+                "type": "box",
+                "layout": "vertical",
+                "flex": 5,
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "เริ่มงานเลี้ยงฉลอง",
+                    "size": "sm",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "The celebration begins.",
+                    "size": "xxs",
+                    "color": "#777777",
+                    "style": "italic",
+                    "wrap": true
+                  }
+                ]
               }
             ]
           }
         ]
-      },
-      {
-        "type": "separator",
-        "margin": "lg",
-        "color": "#E3D9B0"
-      },
-      {
-        "type": "text",
-        "text": "การเดินทาง",
-        "size": "xs",
-        "color": "#8E5A6B",
-        "weight": "bold",
-        "margin": "lg"
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "md",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "spacing": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": "รถยนต์",
-                "size": "sm",
-                "color": "#8E5A6B",
-                "weight": "bold",
-                "flex": 2
-              },
-              {
-                "type": "text",
-                "text": "จอดที่อาคาร Gaysorn ได้ตลอด 24 ชั่วโมง",
-                "size": "sm",
-                "color": "#555555",
-                "wrap": true,
-                "flex": 5
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "spacing": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": "BTS",
-                "size": "sm",
-                "color": "#8E5A6B",
-                "weight": "bold",
-                "flex": 2
-              },
-              {
-                "type": "text",
-                "text": "ลงสถานีชิดลม มีทางเดินเชื่อมเข้าอาคารได้เลย",
-                "size": "sm",
-                "color": "#555555",
-                "wrap": true,
-                "flex": 5
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "style": "primary",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "แผนที่ Gaysorn Urban Resort",
-          "uri": "https://maps.app.goo.gl/ecKm5HQPdBHAQx4R7"
-        },
-        "color": "#7A1E3A",
-        "margin": "lg"
       },
       {
         "type": "box",
@@ -188,65 +189,50 @@
         "margin": "lg",
         "contents": [
           {
-            "type": "text",
-            "text": "เรื่องอาหาร",
-            "size": "xs",
-            "color": "#854F0B",
-            "weight": "bold"
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "xs",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เรื่องอาหาร",
+                "size": "xs",
+                "color": "#854F0B",
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "About the Food",
+                "size": "xxs",
+                "color": "#854F0B",
+                "style": "italic"
+              }
+            ]
           },
           {
-            "type": "text",
-            "text": "งานเย็นมีเครื่องดื่มและอาหารว่าง ไม่มีอาหารมื้อหลัก รบกวนทานมื้อเย็นมาก่อนนะคะ",
-            "size": "xxs",
-            "color": "#854F0B",
-            "wrap": true,
-            "margin": "sm"
-          },
-          {
-            "type": "text",
-            "text": "ใครอยากพกของโปรดมาแชร์กัน ยินดีมากค่ะ นำมาฝากที่จุดบาร์ได้เลย",
-            "size": "xxs",
-            "color": "#854F0B",
-            "wrap": true,
-            "margin": "xs"
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "xs",
+            "margin": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "มีเครื่องดื่มและอาหารว่าง ไม่มีมื้อหลัก รบกวนทานมื้อเย็นมาก่อน",
+                "size": "xxs",
+                "color": "#854F0B",
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "Drinks and light bites only, no dinner. Please eat beforehand.",
+                "size": "xxs",
+                "color": "#854F0B",
+                "wrap": true,
+                "style": "italic"
+              }
+            ]
           }
         ]
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "backgroundColor": "#F7F2EC",
-        "cornerRadius": "8px",
-        "paddingAll": "12px",
-        "margin": "md",
-        "contents": [
-          {
-            "type": "text",
-            "text": "การแต่งกาย",
-            "size": "xs",
-            "color": "#8E5A6B",
-            "weight": "bold"
-          },
-          {
-            "type": "text",
-            "text": "ดูธีมการแต่งกายและรายละเอียดทั้งหมดได้ที่หน้ากำหนดการค่ะ",
-            "size": "xxs",
-            "color": "#777777",
-            "wrap": true,
-            "margin": "sm"
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "style": "secondary",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "ดูกำหนดการทั้งวัน",
-          "uri": "https://avoltwedding.worshipnight.life/guide"
-        },
-        "margin": "sm"
       },
       {
         "type": "separator",
@@ -254,13 +240,164 @@
         "color": "#E3D9B0"
       },
       {
-        "type": "text",
-        "text": "ในงานมีมุมสนุก ๆ รออยู่ กดเมนู THINGS TO DO เพื่อดูได้เลยค่ะ",
-        "size": "xxs",
-        "color": "#8FA876",
-        "align": "center",
-        "wrap": true,
-        "margin": "md"
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "margin": "lg",
+        "contents": [
+          {
+            "type": "text",
+            "text": "การเดินทาง",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "Getting There",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "style": "italic"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "lg",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 2,
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "รถยนต์",
+                    "size": "sm",
+                    "color": "#8E5A6B",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "By Car",
+                    "size": "xxs",
+                    "color": "#C9A9A6",
+                    "style": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 5,
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "จอดได้ที่อาคาร Gaysorn ตลอด 24 ชั่วโมง",
+                    "size": "sm",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "Parking at Gaysorn is open 24 hours.",
+                    "size": "xxs",
+                    "color": "#777777",
+                    "style": "italic",
+                    "wrap": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 2,
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "BTS",
+                    "size": "sm",
+                    "color": "#8E5A6B",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "By Skytrain",
+                    "size": "xxs",
+                    "color": "#C9A9A6",
+                    "style": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 5,
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ลงสถานีชิดลม มีทางเดินเชื่อมตรงเข้าอาคาร",
+                    "size": "sm",
+                    "color": "#555555",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "Alight at Chit Lom. A walkway connects directly to the building.",
+                    "size": "xxs",
+                    "color": "#777777",
+                    "style": "italic",
+                    "wrap": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "height": "sm",
+        "color": "#7A1E3A",
+        "margin": "lg",
+        "action": {
+          "type": "uri",
+          "label": "แผนที่ · Map",
+          "uri": "https://maps.app.goo.gl/ecKm5HQPdBHAQx4R7"
+        }
+      },
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "margin": "sm",
+        "action": {
+          "type": "uri",
+          "label": "กำหนดการ · Guide",
+          "uri": "https://avoltwedding.worshipnight.life/guide"
+        }
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
       }
     ]
   }
