@@ -498,7 +498,43 @@
             "layout": "vertical",
             "margin": "md",
             "spacing": "xs",
-            "contents": []
+            "contents": [
+              {
+                "type": "text",
+                "text": "ยังหาที่จอดรถอยู่?",
+                "size": "xxs",
+                "color": "#8E5A6B",
+                "weight": "bold"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "margin": "sm",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "button",
+                    "style": "secondary",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "แผนที่โบสถ์",
+                      "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
+                    }
+                  },
+                  {
+                    "type": "button",
+                    "style": "secondary",
+                    "height": "sm",
+                    "action": {
+                      "type": "uri",
+                      "label": "ที่จอดรถ",
+                      "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
+                    }
+                  }
+                ]
+              }
+            ]
           },
           {
             "type": "box",

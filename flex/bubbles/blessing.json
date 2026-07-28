@@ -1,54 +1,132 @@
 {
   "type": "bubble",
-  "body": {
+  "size": "mega",
+  "header": {
     "type": "box",
     "layout": "vertical",
+    "backgroundColor": "#4B1528",
+    "paddingAll": "18px",
     "contents": [
       {
         "type": "text",
+        "text": "BLESSINGS",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
         "text": "ฝากคำอวยพรให้เรา",
+        "size": "lg",
+        "color": "#ffffff",
+        "align": "center",
         "weight": "bold",
-        "color": "#8E3A59",
-        "size": "xl"
+        "margin": "sm"
       },
       {
         "type": "text",
-        "text": "คำอวยพรจากคุณ คือของขวัญที่มีความหมายมากสำหรับเรา ",
-        "weight": "bold",
-        "size": "xxl",
-        "margin": "md",
-        "wrap": true
+        "text": "Share a Blessing With Us",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "margin": "xs"
       },
       {
         "type": "text",
-        "text": "สามารถฝากข้อความไว้ให้เราได้เลย 🤍",
-        "size": "xl",
-        "color": "#aaaaaa",
-        "wrap": true
-      },
-      {
-        "type": "separator",
-        "margin": "xxl"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": "อวยพร",
-          "text": "อวยพร"
-        },
-        "style": "primary",
-        "color": "#7A1E3A"
-      },
-      {
-        "type": "separator",
-        "margin": "xxl"
+        "text": "A & VOLT · 1 AUGUST 2026",
+        "size": "xxs",
+        "color": "#C9A9A6",
+        "align": "center",
+        "margin": "md"
       }
     ]
   },
-  "styles": {
-    "footer": {
-      "separator": true
-    }
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "contents": [
+          {
+            "type": "text",
+            "text": "คำอวยพรจากคุณ คือของขวัญที่มีความหมายมากสำหรับเรา",
+            "size": "md",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Your blessing is the most meaningful gift we could receive.",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "style": "italic",
+            "wrap": true
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "margin": "lg",
+        "contents": [
+          {
+            "type": "text",
+            "text": "กดปุ่มด้านล่างเพื่อเขียนคำอวยพรได้เลย เราจะเก็บทุกข้อความไว้อ่านด้วยกัน",
+            "size": "xs",
+            "color": "#555555",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Tap below to write yours. We will keep every message and read them together.",
+            "size": "xxs",
+            "color": "#777777",
+            "style": "italic",
+            "wrap": true
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#7A1E3A",
+        "height": "sm",
+        "margin": "lg",
+        "action": {
+          "type": "uri",
+          "label": "Share a Blessing",
+          "uri": "https://avoltwedding.worshipnight.life/blessing/"
+        }
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "With love and gratitude — God bless you",
+            "size": "xxs",
+            "color": "#8FA876",
+            "style": "italic",
+            "align": "center",
+            "wrap": true
+          }
+        ]
+      }
+    ]
   }
 }

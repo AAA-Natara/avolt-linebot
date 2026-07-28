@@ -1,0 +1,221 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#4B1528",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "WITH LOVE",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "คำอวยพรและของขวัญ",
+        "size": "lg",
+        "color": "#ffffff",
+        "align": "center",
+        "weight": "bold",
+        "margin": "sm"
+      },
+      {
+        "type": "text",
+        "text": "Blessings and Gifts",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "margin": "xs",
+        "style": "italic"
+      },
+      {
+        "type": "text",
+        "text": "A & VOLT · 1 AUGUST 2026",
+        "size": "xxs",
+        "color": "#C9A9A6",
+        "align": "center",
+        "margin": "md"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "contents": [
+          {
+            "type": "text",
+            "text": "การมาร่วมงานของทุกท่านคือของขวัญที่มีค่าที่สุดสำหรับเราแล้ว หากท่านประสงค์จะร่วมอวยพรผ่านของขวัญกดด้านล่างได้เลยค่ะ",
+            "size": "xs",
+            "color": "#777777",
+            "wrap": true,
+            "align": "center"
+          },
+          {
+            "type": "text",
+            "text": "Your presence is the greatest gift we could ask for. If you'd like to send your blessings through a gift, please tap below.",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "wrap": true,
+            "style": "italic",
+            "align": "center"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#FAF6EA",
+        "cornerRadius": "10px",
+        "paddingAll": "16px",
+        "margin": "lg",
+        "spacing": "xs",
+        "action": {
+          "type": "message",
+          "label": "ฝากคำอวยพร",
+          "text": "คำอวยพร"
+        },
+        "contents": [
+          {
+            "type": "text",
+            "text": "ฝากคำอวยพร",
+            "size": "md",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "align": "center",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Share a Blessing",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "เขียนข้อความถึงเราทั้งสอง",
+            "size": "xxs",
+            "color": "#777777",
+            "align": "center",
+            "wrap": true,
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "Write a message for the two of us",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#F7F2EC",
+        "cornerRadius": "10px",
+        "paddingAll": "16px",
+        "margin": "md",
+        "spacing": "xs",
+        "action": {
+          "type": "message",
+          "label": "มอบของขวัญ",
+          "text": "ของขวัญ"
+        },
+        "contents": [
+          {
+            "type": "text",
+            "text": "มอบของขวัญ",
+            "size": "md",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "align": "center",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Give a Gift",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "ร่วมแสดงความยินดีผ่านการโอนเงิน",
+            "size": "xxs",
+            "color": "#777777",
+            "align": "center",
+            "wrap": true,
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "ส่งหลักฐานการโอนได้ทางแชทนี้ได้เลยค่ะ",
+            "size": "xxs",
+            "color": "#777777",
+            "align": "center",
+            "wrap": true,
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "Scan the QR code to send a gift",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Feel free to share your slip in this chat",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "xs",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "With love and gratitude — God bless you",
+            "size": "xxs",
+            "color": "#8FA876",
+            "align": "center",
+            "style": "italic",
+            "wrap": true
+          }
+        ]
+      }
+    ]
+  }
+}

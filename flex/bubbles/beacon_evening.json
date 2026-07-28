@@ -142,6 +142,40 @@
       {
         "type": "box",
         "layout": "vertical",
+        "backgroundColor": "#F7F2EC",
+        "cornerRadius": "8px",
+        "paddingAll": "12px",
+        "margin": "lg",
+        "spacing": "xs",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ที่จอดรถ และ ขากลับ",
+            "size": "xxs",
+            "color": "#8E5A6B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "จอดที่อาคาร Gaysorn ได้ตลอด 24 ชั่วโมง ไม่ต้องรีบนะคะ",
+            "size": "xxs",
+            "color": "#777777",
+            "wrap": true,
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "ใครกลับ BTS ลงทางเชื่อมไปสถานีชิดลมได้เลยค่ะ",
+            "size": "xxs",
+            "color": "#777777",
+            "wrap": true,
+            "margin": "xs"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
         "margin": "lg",
         "paddingAll": "14px",
         "cornerRadius": "10px",

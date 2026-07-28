@@ -1,0 +1,1107 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#7A1E3A",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "CEREMONY · SATURDAY 1 AUGUST",
+            "size": "xs",
+            "color": "#E3D9B0",
+            "align": "center",
+            "weight": "bold",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "พิธีมงคลสมรส",
+            "size": "lg",
+            "color": "#ffffff",
+            "align": "center",
+            "weight": "bold",
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "The Wedding Ceremony",
+            "size": "xs",
+            "color": "#E3D9B0",
+            "align": "center",
+            "margin": "xs",
+            "style": "italic"
+          },
+          {
+            "type": "text",
+            "text": "คริสตจักรสดุดี กรุงเทพ · Praise Church Bangkok",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "align": "center",
+            "margin": "md",
+            "wrap": true
+          }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "xs",
+            "contents": [
+              {
+                "type": "text",
+                "text": "กำหนดการ",
+                "size": "xs",
+                "color": "#8E5A6B",
+                "wrap": true,
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "Schedule",
+                "size": "xxs",
+                "color": "#C9A9A6",
+                "wrap": true,
+                "style": "italic"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "md",
+            "spacing": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 2,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "12:00 น.",
+                        "size": "sm",
+                        "color": "#7A1E3A",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "12:00 PM",
+                        "size": "xxs",
+                        "color": "#8E5A6B"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "เปิดให้ลงทะเบียน เชิญพักรอภายในอาคาร",
+                        "size": "sm",
+                        "color": "#555555",
+                        "wrap": true
+                      },
+                      {
+                        "type": "text",
+                        "text": "Registration opens. Guests are welcome to be seated inside.",
+                        "size": "xxs",
+                        "color": "#777777",
+                        "wrap": true,
+                        "style": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 2,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "13:00 น.",
+                        "size": "sm",
+                        "color": "#7A1E3A",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "1:00 PM",
+                        "size": "xxs",
+                        "color": "#8E5A6B"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "เริ่มพิธีมงคลสมรส",
+                        "size": "sm",
+                        "color": "#555555",
+                        "wrap": true
+                      },
+                      {
+                        "type": "text",
+                        "text": "The ceremony commences.",
+                        "size": "xxs",
+                        "color": "#777777",
+                        "wrap": true,
+                        "style": "italic"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 2,
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "16:00 น.",
+                        "size": "sm",
+                        "color": "#7A1E3A",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "4:00 PM",
+                        "size": "xxs",
+                        "color": "#8E5A6B"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "flex": 5,
+                    "spacing": "xs",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "เสร็จสิ้นพิธีช่วงบ่าย",
+                        "size": "sm",
+                        "color": "#555555",
+                        "wrap": true
+                      },
+                      {
+                        "type": "text",
+                        "text": "The afternoon programme concludes.",
+                        "size": "xxs",
+                        "color": "#777777",
+                        "wrap": true,
+                        "style": "italic"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "lg",
+            "color": "#E3D9B0"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "xs",
+            "contents": [
+              {
+                "type": "text",
+                "text": "การเดินทางและที่จอดรถ",
+                "size": "xs",
+                "color": "#8E5A6B",
+                "wrap": true,
+                "weight": "bold"
+              },
+              {
+                "type": "text",
+                "text": "Directions and Parking",
+                "size": "xxs",
+                "color": "#C9A9A6",
+                "wrap": true,
+                "style": "italic"
+              }
+            ],
+            "margin": "lg"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "xs",
+            "contents": [
+              {
+                "type": "text",
+                "text": "มีลานจอดรถบริการภายในบริเวณคริสตจักร ดูจุดเข้าลานจอดได้จากปุ่มด้านล่าง ขอความกรุณาเผื่อเวลาสำหรับการเดินจากลานจอดมายังห้องประกอบพิธี",
+                "size": "xxs",
+                "color": "#777777",
+                "wrap": true
+              },
+              {
+                "type": "text",
+                "text": "Parking is available within the church grounds. The entrance is shown via the button below. Kindly allow additional time for the walk to the sanctuary.",
+                "size": "xxs",
+                "color": "#C9A9A6",
+                "wrap": true,
+                "style": "italic"
+              }
+            ],
+            "margin": "sm"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "height": "sm",
+            "margin": "md",
+            "color": "#7A1E3A",
+            "action": {
+              "type": "uri",
+              "label": "แผนที่ · Map",
+              "uri": "https://maps.app.goo.gl/VEKubpNcSKhwCACs6"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "margin": "sm",
+            "action": {
+              "type": "uri",
+              "label": "ที่จอดรถ · Parking",
+              "uri": "https://maps.app.goo.gl/9B3y59szrXPRHskFA"
+            }
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#EEF2E6",
+            "cornerRadius": "8px",
+            "paddingAll": "12px",
+            "margin": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "บริการเครื่องดื่ม",
+                    "size": "xs",
+                    "color": "#3B6D11",
+                    "wrap": true,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "Refreshments",
+                    "size": "xxs",
+                    "color": "#4a6b2a",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "เปิดให้บริการตั้งแต่เวลา 14:30 น. สามารถสั่งล่วงหน้าผ่านปุ่มด้านล่าง และรับเครื่องดื่มได้ที่ชั้น 1 ของอาคาร ทางทีมงานจะแจ้งให้ทราบทาง LINE เมื่อเครื่องดื่มพร้อมเสิร์ฟ",
+                    "size": "xxs",
+                    "color": "#4a6b2a",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "Refreshments will be served from 2:30 PM. Orders may be placed in advance using the button below and collected on the ground floor. A notification will be sent via LINE once your order is ready.",
+                    "size": "xxs",
+                    "color": "#4a6b2a",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ],
+                "margin": "sm"
+              }
+            ]
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "height": "sm",
+            "color": "#7A1E3A",
+            "margin": "sm",
+            "action": {
+              "type": "uri",
+              "label": "เครื่องดื่ม · Drinks",
+              "uri": "https://liff.line.me/2009323052-tvtJa02F"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "height": "sm",
+            "margin": "sm",
+            "action": {
+              "type": "uri",
+              "label": "กำหนดการ · Guide",
+              "uri": "https://avoltwedding.worshipnight.life/guide"
+            }
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#FAEEDA",
+            "cornerRadius": "8px",
+            "paddingAll": "12px",
+            "margin": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "งานเลี้ยงฉลองมงคลสมรส",
+                    "size": "xs",
+                    "color": "#854F0B",
+                    "wrap": true,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "The Evening Celebration",
+                    "size": "xxs",
+                    "color": "#854F0B",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "เวลา 19:00 น. ณ Gaysorn Urban Resort ชั้น 19 เปิดให้เข้าร่วมงานตั้งแต่เวลา 18:00 น. รายละเอียดการเดินทางดูได้จากเมนู CELEBRATION",
+                    "size": "xxs",
+                    "color": "#854F0B",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "7:00 PM at Gaysorn Urban Resort, 19th floor. Doors open at 6:00 PM. Travel details are available under CELEBRATION in the menu.",
+                    "size": "xxs",
+                    "color": "#854F0B",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ],
+                "margin": "sm"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#7A1E3A",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "THE VOWS · 1:00 PM",
+            "size": "xs",
+            "color": "#E3D9B0",
+            "align": "center",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "ลำดับพิธี",
+            "size": "lg",
+            "color": "#ffffff",
+            "align": "center",
+            "weight": "bold",
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "Order of Ceremony",
+            "size": "xs",
+            "color": "#E3D9B0",
+            "align": "center",
+            "margin": "xs",
+            "style": "italic"
+          },
+          {
+            "type": "text",
+            "text": "คริสตจักรสดุดี กรุงเทพ · Praise Church Bangkok",
+            "size": "xxs",
+            "color": "#C9A9A6",
+            "align": "center",
+            "margin": "md",
+            "wrap": true
+          }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 1,
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "01",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "อธิษฐานเปิด",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Opening Prayer",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "02",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "อัญเชิญพระวจนะ",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Scripture Reading",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "03",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "นมัสการพระเจ้า",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Worship",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "04",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "พิธีสมรสศักดิ์สิทธิ์",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Holy Matrimony",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "05",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "บทเพลงพิเศษ (1)",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Special Song (1)",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "06",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "บทเพลงพิเศษ (2)",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Special Song (2)",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "07",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ให้โอวาท",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Words of Counsel",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "flex": 1,
+                "spacing": "md",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "08",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ลงนามทะเบียนสมรส",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Signing of the Register",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "09",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "เคารพผู้ปกครอง",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Honouring Parents",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "10",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "พิธีมหาสนิท",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Holy Communion",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "11",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "กล่าวแสดงความยินดี",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Congratulatory Remarks",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "12",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "อธิษฐานปิด",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Closing Prayer",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "13",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ประกาศการเป็นสามีภรรยา",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Pronouncement of Marriage",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "14",
+                        "size": "xxs",
+                        "color": "#8E5A6B",
+                        "weight": "bold",
+                        "flex": 0
+                      },
+                      {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 1,
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "ถ่ายภาพหมู่",
+                            "size": "xxs",
+                            "color": "#555555",
+                            "wrap": true
+                          },
+                          {
+                            "type": "text",
+                            "text": "Group Photograph",
+                            "size": "xxs",
+                            "color": "#C9A9A6",
+                            "wrap": true,
+                            "style": "italic"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xl",
+            "color": "#E3D9B0"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "backgroundColor": "#F7F2EC",
+            "cornerRadius": "8px",
+            "paddingAll": "14px",
+            "margin": "lg",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "ถึงแขกผู้มีเกียรติทุกท่าน",
+                    "size": "xs",
+                    "color": "#8E5A6B",
+                    "wrap": true,
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "To Our Honoured Guests",
+                    "size": "xxs",
+                    "color": "#C9A9A6",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "xs",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "วันเสาร์ที่ 1 สิงหาคม เป็นวันที่เราทั้งสองจะกล่าวคำมั่นสัญญาครั้งสำคัญที่สุดในชีวิต ต่อพระพักตร์พระเจ้าและต่อหน้าทุกท่านที่เรารัก ว่าจะดูแลกันและกันตลอดไป การมีทุกท่านร่วมเป็นสักขีพยานในวันนี้ คือเกียรติอย่างยิ่งสำหรับเรา",
+                    "size": "xxs",
+                    "color": "#777777",
+                    "wrap": true
+                  },
+                  {
+                    "type": "text",
+                    "text": "On Saturday 1 August, we will make the most important promise of our lives, before God and before those we love, to care for one another always. It is our great honour to have you with us as witnesses to this day.",
+                    "size": "xxs",
+                    "color": "#C9A9A6",
+                    "wrap": true,
+                    "style": "italic"
+                  }
+                ],
+                "margin": "sm"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "size": "mega",
+      "hero": {
+        "type": "image",
+        "url": "https://avoltwedding.worshipnight.life/todo/01.png",
+        "size": "full",
+        "aspectRatio": "20:9",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "01 · REFRESHMENTS",
+            "size": "xxs",
+            "color": "#7A1E3A",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "สั่งเครื่องดื่ม",
+            "size": "lg",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "text",
+            "text": "Order Refreshments",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "ที่คริสตจักรสดุดี ตั้งแต่ 2.30-4PM",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg",
+            "decoration": "none",
+            "style": "italic"
+          },
+          {
+            "type": "text",
+            "text": "At Praise Church, From 2.30 to 4PM",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg",
+            "decoration": "none",
+            "style": "italic"
+          },
+          {
+            "type": "text",
+            "text": "เราจะแจ้งเตือนทาง LINE เมื่อเครื่องดื่มพร้อม",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg"
+          },
+          {
+            "type": "text",
+            "text": "Collect on the ground floor · we'll ping you on LINE",
+            "size": "xxs",
+            "color": "#777777",
+            "style": "italic",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "color": "#7A1E3A",
+            "height": "sm",
+            "margin": "lg",
+            "action": {
+              "type": "uri",
+              "label": "เครื่องดื่ม · Drinks",
+              "uri": "https://liff.line.me/2009323052-tvtJa02F"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "hero": {
+        "type": "image",
+        "url": "https://avoltwedding.worshipnight.life/todo/02.png",
+        "size": "full",
+        "aspectRatio": "20:9",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "02 · LOVE CORNER",
+            "size": "xxs",
+            "color": "#8E5A6B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "แชร์รูป อวดแฟน",
+            "size": "lg",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "text",
+            "text": "Love Corner",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "มาคนเดียวหรือมาเป็นคู่ ลงชื่อไว้ เผื่อได้เจอเพื่อนใหม่คืนนี้",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg"
+          },
+          {
+            "type": "text",
+            "text": "Solo or with someone? Sign in and see who you'll meet",
+            "size": "xxs",
+            "color": "#777777",
+            "style": "italic",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "color": "#7A1E3A",
+            "height": "sm",
+            "margin": "lg",
+            "action": {
+              "type": "uri",
+              "label": "Love Corner",
+              "uri": "https://avoltwedding.worshipnight.life/lovecorner"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "hero": {
+        "type": "image",
+        "url": "https://avoltwedding.worshipnight.life/todo/03.png",
+        "size": "full",
+        "aspectRatio": "20:9",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "03 · THE MARKET",
+            "size": "xxs",
+            "color": "#8FA876",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "เพื่อนฝากร้าน เพื่อนฝากผลงาน",
+            "size": "lg",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "text",
+            "text": "The Market",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "ฝากร้าน ธุรกิจ หรือผลงานให้เพื่อนในงานได้รู้จัก",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg"
+          },
+          {
+            "type": "text",
+            "text": "Share your shop, business, or work with everyone",
+            "size": "xxs",
+            "color": "#777777",
+            "style": "italic",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "color": "#7A1E3A",
+            "height": "sm",
+            "margin": "lg",
+            "action": {
+              "type": "uri",
+              "label": "ร้านค้า · Market",
+              "uri": "https://avoltwedding.worshipnight.life/market"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "size": "mega",
+      "hero": {
+        "type": "image",
+        "url": "https://avoltwedding.worshipnight.life/todo/04.png",
+        "size": "full",
+        "aspectRatio": "20:9",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "paddingAll": "18px",
+        "contents": [
+          {
+            "type": "text",
+            "text": "04 · SHARE A BLESSING",
+            "size": "xxs",
+            "color": "#4B1528",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "ฝากคำอวยพร",
+            "size": "lg",
+            "color": "#7A1E3A",
+            "weight": "bold",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "text",
+            "text": "Share a Blessing",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "style": "italic",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "เขียนถึงเราทั้งสองได้ตั้งแต่วันนี้จนจบงาน",
+            "size": "sm",
+            "color": "#555555",
+            "wrap": true,
+            "margin": "lg"
+          },
+          {
+            "type": "text",
+            "text": "Write to us anytime from today until the celebration ends",
+            "size": "xxs",
+            "color": "#777777",
+            "style": "italic",
+            "wrap": true,
+            "margin": "xs"
+          },
+          {
+            "type": "button",
+            "style": "primary",
+            "color": "#7A1E3A",
+            "height": "sm",
+            "margin": "lg",
+            "action": {
+              "type": "uri",
+              "label": "คำอวยพร · Blessing",
+              "uri": "https://avoltwedding.worshipnight.life/blessing/"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

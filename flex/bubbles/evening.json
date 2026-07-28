@@ -1,0 +1,267 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "backgroundColor": "#4B1528",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "CELEBRATION · SAT 1 AUG",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "weight": "bold"
+      },
+      {
+        "type": "text",
+        "text": "งานเลี้ยงฉลอง",
+        "size": "lg",
+        "color": "#ffffff",
+        "align": "center",
+        "weight": "bold",
+        "margin": "sm"
+      },
+      {
+        "type": "text",
+        "text": "Gaysorn Urban Resort ชั้น 19",
+        "size": "xs",
+        "color": "#E3D9B0",
+        "align": "center",
+        "margin": "xs"
+      }
+    ]
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "paddingAll": "18px",
+    "contents": [
+      {
+        "type": "text",
+        "text": "กำหนดเวลา",
+        "size": "xs",
+        "color": "#8E5A6B",
+        "weight": "bold"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "18:00 น.",
+                "size": "sm",
+                "color": "#7A1E3A",
+                "weight": "bold",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "เปิดให้เข้างาน",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "19:00 น.",
+                "size": "sm",
+                "color": "#7A1E3A",
+                "weight": "bold",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "เริ่มงานเลี้ยง",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "text",
+        "text": "การเดินทาง",
+        "size": "xs",
+        "color": "#8E5A6B",
+        "weight": "bold",
+        "margin": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "รถยนต์",
+                "size": "sm",
+                "color": "#8E5A6B",
+                "weight": "bold",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "จอดที่อาคาร Gaysorn ได้ตลอด 24 ชั่วโมง",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "spacing": "md",
+            "contents": [
+              {
+                "type": "text",
+                "text": "BTS",
+                "size": "sm",
+                "color": "#8E5A6B",
+                "weight": "bold",
+                "flex": 2
+              },
+              {
+                "type": "text",
+                "text": "ลงสถานีชิดลม มีทางเดินเชื่อมเข้าอาคารได้เลย",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "style": "primary",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "แผนที่ Gaysorn Urban Resort",
+          "uri": "https://maps.app.goo.gl/ecKm5HQPdBHAQx4R7"
+        },
+        "color": "#7A1E3A",
+        "margin": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#FAEEDA",
+        "cornerRadius": "8px",
+        "paddingAll": "12px",
+        "margin": "lg",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เรื่องอาหาร",
+            "size": "xs",
+            "color": "#854F0B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "งานเย็นมีเครื่องดื่มและอาหารว่าง ไม่มีอาหารมื้อหลัก รบกวนทานมื้อเย็นมาก่อนนะคะ",
+            "size": "xxs",
+            "color": "#854F0B",
+            "wrap": true,
+            "margin": "sm"
+          },
+          {
+            "type": "text",
+            "text": "ใครอยากพกของโปรดมาแชร์กัน ยินดีมากค่ะ นำมาฝากที่จุดบาร์ได้เลย",
+            "size": "xxs",
+            "color": "#854F0B",
+            "wrap": true,
+            "margin": "xs"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "backgroundColor": "#F7F2EC",
+        "cornerRadius": "8px",
+        "paddingAll": "12px",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "การแต่งกาย",
+            "size": "xs",
+            "color": "#8E5A6B",
+            "weight": "bold"
+          },
+          {
+            "type": "text",
+            "text": "ดูธีมการแต่งกายและรายละเอียดทั้งหมดได้ที่หน้ากำหนดการค่ะ",
+            "size": "xxs",
+            "color": "#777777",
+            "wrap": true,
+            "margin": "sm"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "style": "secondary",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "ดูกำหนดการทั้งวัน",
+          "uri": "https://avoltwedding.worshipnight.life/guide"
+        },
+        "margin": "sm"
+      },
+      {
+        "type": "separator",
+        "margin": "lg",
+        "color": "#E3D9B0"
+      },
+      {
+        "type": "text",
+        "text": "ในงานมีมุมสนุก ๆ รออยู่ กดเมนู THINGS TO DO เพื่อดูได้เลยค่ะ",
+        "size": "xxs",
+        "color": "#8FA876",
+        "align": "center",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  }
+}
