@@ -89,9 +89,9 @@ const FLEX = {
   blessing: () => loadJsonWithFallback("flex/bubbles/blessing.json"),
   confirm: () => loadJsonWithFallback("flex/bubbles/confirm.json"),
   gift: () => loadJsonWithFallback("flex/bubbles/gift.json"),
+
+  // การ์ดขอบคุณหลังงาน (ใช้ไฟล์ beacon_welcome.json เดิม แต่เนื้อหาเป็น Thank You แล้ว)
   beaconWelcome: () => loadJsonWithFallback("flex/bubbles/beacon_welcome.json"),
-  beaconAfternoon: () => loadJsonWithFallback("flex/bubbles/beacon_afternoon.json"),
-  beaconEvening: () => loadJsonWithFallback("flex/bubbles/beacon_evening.json"),
 
   // ===== เมนูใหม่ (rich menu 2026-07) =====
   wishesHub: () => loadJsonWithFallback("flex/bubbles/wishes_hub.json"),
@@ -127,16 +127,6 @@ function renderTemplate(bubbleJson, vars = {}) {
 // วันที่ปัจจุบันแบบเวลาไทย (YYYY-MM-DD) ใช้เป็น sent_date
 function todayBangkok() {
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" });
-}
-
-// ชั่วโมงปัจจุบันแบบเวลาไทย (0–23)
-function hourBangkok() {
-  const h = new Date().toLocaleString("en-US", {
-    timeZone: "Asia/Bangkok",
-    hour: "2-digit",
-    hour12: false,
-  });
-  return parseInt(h, 10);
 }
 
 // พยายามบันทึก log ว่าส่งการ์ดนี้แล้ววันนี้
@@ -307,46 +297,28 @@ const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
 
 async function handleEvent(event) {
 
-
-
   // ─── BEACON EVENT ───
+  // หลังจบงาน: ส่งการ์ดขอบคุณใบเดียว (วันละครั้งต่อคน)
   if (event.type === "beacon") {
     const userId = event.source?.userId;
     if (!userId) return;
     if (event.beacon.hwid !== BEACON_HWID) return;
     if (event.beacon.type !== "enter") return;
 
-    const hour = hourBangkok();
-    const messages = [];
-
     try {
       const profile = await client.getProfile(userId);
       const firstName = profile.displayName;
 
-      // 1) Welcome อลังการ — ครั้งแรกของวัน
       if (await claimBeaconCard(userId, "welcome")) {
         const bubble = renderTemplate(FLEX.beaconWelcome(), {
           FIRST_NAME: `คุณ${firstName}`,
         });
-        messages.push(flexMessage(`ยินดีต้อนรับ คุณ${firstName}`, bubble));
-      }
-
-      // 2) ข้อความตามช่วงเวลา (ช่วงละครั้งต่อวัน)
-      if (hour >= 12 && hour < 18) {
-        if (await claimBeaconCard(userId, "afternoon")) {
-          messages.push(flexMessage("กำหนดการช่วงบ่าย", FLEX.beaconAfternoon()));
-        }
-      } else if (hour >= 18) {
-        if (await claimBeaconCard(userId, "evening")) {
-          messages.push(flexMessage("ร่วมเฉลิมฉลองช่วงค่ำ", FLEX.beaconEvening()));
-        }
-      }
-
-      if (messages.length > 0) {
-        await client.pushMessage(userId, messages);
-        console.log(`[BEACON] ${firstName} → ส่ง ${messages.length} การ์ด (${hour}:00)`);
+        await client.pushMessage(userId, [
+          flexMessage(`ขอบคุณ คุณ${firstName}`, bubble),
+        ]);
+        console.log(`[BEACON] ${firstName} → ส่งการ์ดขอบคุณ`);
       } else {
-        console.log(`[BEACON] ${firstName} → ได้ครบแล้ววันนี้ (${hour}:00)`);
+        console.log(`[BEACON] ${firstName} → ได้รับการ์ดแล้ววันนี้`);
       }
     } catch (err) {
       console.error("[BEACON] Error:", err.message || err);
@@ -682,4 +654,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
