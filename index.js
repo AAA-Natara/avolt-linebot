@@ -5,6 +5,7 @@ const line = require("@line/bot-sdk");
 const dotenv = require("dotenv");
 const fs = require("fs");
 const path = require("path");
+const cron = require("node-cron");
 const { createClient } = require("@supabase/supabase-js");
 
 dotenv.config();
@@ -90,8 +91,11 @@ const FLEX = {
   confirm: () => loadJsonWithFallback("flex/bubbles/confirm.json"),
   gift: () => loadJsonWithFallback("flex/bubbles/gift.json"),
 
-  // การ์ดขอบคุณหลังงาน (ใช้ไฟล์ beacon_welcome.json เดิม แต่เนื้อหาเป็น Thank You แล้ว)
+  // การ์ด Welcome to AVOLT Home (beacon ที่บ้าน)
   beaconWelcome: () => loadJsonWithFallback("flex/bubbles/beacon_welcome.json"),
+
+  // ข้อพระคัมภีร์ประจำวัน (ส่งทุกวัน 12:00)
+  verseOfDay: () => loadJsonWithFallback("flex/bubbles/verse_of_day.json"),
 
   // ===== เมนูใหม่ (rich menu 2026-07) =====
   wishesHub: () => loadJsonWithFallback("flex/bubbles/wishes_hub.json"),
@@ -113,12 +117,13 @@ const MENU_ROUTES = {
   "กิจกรรมในงาน": ["thingsToDo", "กิจกรรมในงาน"],
 };
 
-// ========== Beacon helpers ==========
+// ========== Template helpers ==========
 // แทน placeholder ใน Flex JSON (เช่น {{FIRST_NAME}})
 function renderTemplate(bubbleJson, vars = {}) {
   let str = JSON.stringify(bubbleJson);
   for (const [key, val] of Object.entries(vars)) {
-    const safe = String(val).replace(/"/g, '\\"');
+    // escape ให้ปลอดภัยเวลาแทนลงใน JSON string
+    const safe = JSON.stringify(String(val)).slice(1, -1);
     str = str.split(`{{${key}}}`).join(safe);
   }
   return JSON.parse(str);
@@ -127,6 +132,16 @@ function renderTemplate(bubbleJson, vars = {}) {
 // วันที่ปัจจุบันแบบเวลาไทย (YYYY-MM-DD) ใช้เป็น sent_date
 function todayBangkok() {
   return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Bangkok" });
+}
+
+// วันที่แบบไทยสำหรับโชว์บนการ์ด เช่น "5 สิงหาคม 2569"
+function dateThaiToday() {
+  return new Date().toLocaleDateString("th-TH", {
+    timeZone: "Asia/Bangkok",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 // พยายามบันทึก log ว่าส่งการ์ดนี้แล้ววันนี้
@@ -144,6 +159,80 @@ async function claimBeaconCard(userId, cardType) {
   }
   return true;
 }
+
+// ========== Bible verse helpers (OurManna API) ==========
+// order=daily  -> ข้อประจำวัน (เว็บเลือกให้ ทุกคนได้ข้อเดียวกัน)
+// order=random -> สุ่มข้อ
+async function fetchVerse(order) {
+  const res = await fetch(
+    `https://beta.ourmanna.com/api/v1/get?format=json&order=${order}`
+  );
+  if (!res.ok) throw new Error(`OurManna HTTP ${res.status}`);
+  const json = await res.json();
+  const d = json && json.verse && json.verse.details;
+  if (!d || !d.text) throw new Error("OurManna: empty verse");
+  return {
+    text: d.text.trim(),
+    ref: d.reference || "",
+    version: d.version || "",
+  };
+}
+
+function verseRefLine(v) {
+  return v.version ? `${v.ref} (${v.version})` : v.ref;
+}
+
+// ข้อสำรองภาษาไทย เผื่อ API ล่ม (ธีมบ้านของพระเจ้า)
+const FALLBACK_VERSE = {
+  text: "ข้าพเจ้ายินดีเมื่อเขากล่าวแก่ข้าพเจ้าว่า \u201cให้เราไปยังพระนิเวศของพระยาห์เวห์เถิด\u201d",
+  ref: "สดุดี 122:1",
+  version: "THSV11",
+};
+
+async function fetchRandomVerseSafe() {
+  try {
+    return await fetchVerse("random");
+  } catch (e) {
+    console.error("[VERSE] random fetch failed, use fallback:", e.message || e);
+    return FALLBACK_VERSE;
+  }
+}
+
+// ========== Verse of the Day (broadcast ทุกวัน 12:00 เวลาไทย) ==========
+async function sendVerseOfDay() {
+  // กันส่งซ้ำ ถ้า Render restart แล้ว cron ยิงซ้ำในวันเดียวกัน
+  const ok = await claimBeaconCard("BROADCAST", "votd");
+  if (!ok) {
+    console.log("[VOTD] ส่งไปแล้ววันนี้ ข้าม");
+    return;
+  }
+
+  const v = await fetchVerse("daily");
+
+  const bubble = renderTemplate(FLEX.verseOfDay(), {
+    VERSE_TEXT: v.text,
+    VERSE_REF: verseRefLine(v),
+    DATE_TH: dateThaiToday(),
+  });
+
+  await client.broadcast([
+    flexMessage(`ข้อพระคัมภีร์ประจำวัน · ${v.ref}`, bubble),
+  ]);
+  console.log(`[VOTD] broadcast แล้ว: ${v.ref}`);
+}
+
+// ทุกวัน 12:00 เวลาไทย
+cron.schedule(
+  "0 12 * * *",
+  async () => {
+    try {
+      await sendVerseOfDay();
+    } catch (e) {
+      console.error("[VOTD] error:", e.message || e);
+    }
+  },
+  { timezone: "Asia/Bangkok" }
+);
 
 // ========== In-memory session ==========
 /**
@@ -198,7 +287,7 @@ async function insertBlessing(userId, message) {
 app.get("/", (req, res) => res.send("OK"));
 
 // SECURITY: repo เป็น public และ URL ของ Render อยู่ในโค้ด
-// route ที่คืนข้อมูลแขกต้องมี ADMIN_KEY เสมอ
+// route ที่คืนข้อมูลแขก/สั่งส่งข้อความ ต้องมี ADMIN_KEY เสมอ
 const ADMIN_KEY = process.env.ADMIN_KEY;
 
 function requireAdmin(req, res) {
@@ -212,6 +301,18 @@ function requireAdmin(req, res) {
   }
   return true;
 }
+
+// ทดสอบส่ง verse of the day ทันที (ไม่ต้องรอเที่ยง)
+// GET /send-votd?key=xxx
+app.get("/send-votd", async (req, res) => {
+  if (!requireAdmin(req, res)) return;
+  try {
+    await sendVerseOfDay();
+    return res.json({ ok: true });
+  } catch (e) {
+    return res.status(500).json({ ok: false, message: e.message || String(e) });
+  }
+});
 
 // export คำอวยพรที่เก็บผ่านแชทไว้ก่อนหน้า เพื่อย้ายไปรวมกับ /blessing/
 // GET /export-blessings?key=xxx        -> JSON
@@ -298,7 +399,7 @@ const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
 async function handleEvent(event) {
 
   // ─── BEACON EVENT ───
-  // หลังจบงาน: ส่งการ์ดขอบคุณใบเดียว (วันละครั้งต่อคน)
+  // ที่บ้าน: Welcome to AVOLT Home + WiFi + ข้อพระคัมภีร์สุ่ม (วันละครั้งต่อคน)
   if (event.type === "beacon") {
     const userId = event.source?.userId;
     if (!userId) return;
@@ -310,13 +411,16 @@ async function handleEvent(event) {
       const firstName = profile.displayName;
 
       if (await claimBeaconCard(userId, "welcome")) {
+        const verse = await fetchRandomVerseSafe();
         const bubble = renderTemplate(FLEX.beaconWelcome(), {
           FIRST_NAME: `คุณ${firstName}`,
+          VERSE_TEXT: verse.text,
+          VERSE_REF: verseRefLine(verse),
         });
         await client.pushMessage(userId, [
-          flexMessage(`ขอบคุณ คุณ${firstName}`, bubble),
+          flexMessage(`Welcome to AVOLT Home คุณ${firstName}`, bubble),
         ]);
-        console.log(`[BEACON] ${firstName} → ส่งการ์ดขอบคุณ`);
+        console.log(`[BEACON] ${firstName} → ส่งการ์ด Welcome Home (${verse.ref})`);
       } else {
         console.log(`[BEACON] ${firstName} → ได้รับการ์ดแล้ววันนี้`);
       }
@@ -479,6 +583,28 @@ async function handleEvent(event) {
     }
   }
 
+  // ข้อพระคัมภีร์วันนี้ (พิมพ์ขอเองได้)
+  if (text === "ข้อพระคัมภีร์" || text === "ข้อพระคัมภีร์วันนี้" || text.toLowerCase() === "verse") {
+    try {
+      const v = await fetchVerse("daily");
+      const bubble = renderTemplate(FLEX.verseOfDay(), {
+        VERSE_TEXT: v.text,
+        VERSE_REF: verseRefLine(v),
+        DATE_TH: dateThaiToday(),
+      });
+      return client.replyMessage(
+        event.replyToken,
+        flexMessage(`ข้อพระคัมภีร์ประจำวัน · ${v.ref}`, bubble)
+      );
+    } catch (e) {
+      console.error("VOTD reply error:", e.message || e);
+      return client.replyMessage(event.replyToken, {
+        type: "text",
+        text: "ขออภัยค่ะ ตอนนี้ดึงข้อพระคัมภีร์ไม่ได้ ลองใหม่อีกครั้งนะคะ 🙏",
+      });
+    }
+  }
+
   // รายละเอียดงาน
   if (text === "รายละเอียดงาน" || text === "รายละเอียดงานแต่งงาน") {
     try {
@@ -622,6 +748,7 @@ async function handleEvent(event) {
       type: "text",
       text:
         "พิมพ์คำสั่งได้เลยค่ะ:\n" +
+        "- ข้อพระคัมภีร์วันนี้\n" +
         "- รายละเอียดงาน\n" +
         "- ยืนยันมาร่วมงาน\n" +
         "- งานช่วงบ่าย\n" +
@@ -643,7 +770,7 @@ async function handleEvent(event) {
 
 
 
-// Keep alive — กัน Render หลับ
+// Keep alive — กัน Render หลับ (สำคัญมาก ไม่งั้น cron เที่ยงวันไม่ยิง)
 setInterval(() => {
   const url = process.env.RENDER_EXTERNAL_URL || "https://avolt-linebot.onrender.com";
   fetch(url).catch(() => {});
