@@ -3,9 +3,9 @@
   "size": "mega",
   "hero": {
     "type": "image",
-    "url": "https://avoltwedding.worshipnight.life/pre/3.png",
+    "url": "https://avoltwedding.worshipnight.life/pre/14.png",
     "size": "full",
-    "aspectRatio": "20:13",
+    "aspectRatio": "5:6",
     "aspectMode": "cover"
   },
   "body": {
@@ -15,7 +15,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "THANK YOU",
+        "text": "AVOLT HOME",
         "size": "xs",
         "color": "#7A1E3A",
         "align": "center",
@@ -23,7 +23,7 @@
       },
       {
         "type": "text",
-        "text": "ขอบคุณ {{FIRST_NAME}}",
+        "text": "Welcome to AVOLT Home",
         "size": "lg",
         "weight": "bold",
         "align": "center",
@@ -33,7 +33,17 @@
       },
       {
         "type": "text",
-        "text": "ขอบคุณที่สละเวลามาร่วมงาน และร่วมเป็นพยานรักในวันสำคัญที่สุดของเราทั้งสองคน ทุกรอยยิ้มและคำอวยพรของคุณมีความหมายกับเรามากจริง ๆ",
+        "text": "ยินดีต้อนรับ {{FIRST_NAME}}",
+        "size": "sm",
+        "weight": "bold",
+        "align": "center",
+        "color": "#8E5A6B",
+        "margin": "sm",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "ดีใจมาก ๆ ที่มาเยี่ยมบ้านเรานะคะ",
         "size": "sm",
         "color": "#888888",
         "align": "center",
@@ -50,44 +60,83 @@
         "spacing": "sm",
         "contents": [
           {
-            "type": "text",
-            "text": "จากใจเราทั้งสองคน",
-            "size": "xs",
-            "weight": "bold",
-            "color": "#7A1E3A"
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Wifi Name",
+                "size": "sm",
+                "weight": "bold",
+                "color": "#7A1E3A",
+                "flex": 4
+              },
+              {
+                "type": "text",
+                "text": "WorshipHome",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 6
+              }
+            ]
           },
           {
-            "type": "text",
-            "text": "ขอพระเจ้าอวยพรคุณและครอบครัวอย่างเต็มล้น ขอบคุณที่เป็นส่วนหนึ่งของเรื่องราวความรักของเรานะคะ",
-            "size": "sm",
-            "color": "#555555",
-            "wrap": true
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Password",
+                "size": "sm",
+                "weight": "bold",
+                "color": "#7A1E3A",
+                "flex": 4
+              },
+              {
+                "type": "text",
+                "text": "PRAISE247",
+                "size": "sm",
+                "color": "#555555",
+                "wrap": true,
+                "flex": 6
+              }
+            ]
           }
         ]
       },
       {
         "type": "box",
         "layout": "vertical",
-        "margin": "lg",
-        "spacing": "xs",
+        "margin": "md",
+        "paddingAll": "14px",
+        "cornerRadius": "10px",
+        "backgroundColor": "#F3F6EE",
+        "spacing": "sm",
         "contents": [
           {
             "type": "text",
-            "text": "ฝากคำอวยพรถึงเราทั้งสองคน",
+            "text": "ข้อพระคัมภีร์สำหรับคุณ",
             "size": "xs",
-            "color": "#8E5A6B",
+            "weight": "bold",
+            "color": "#8FA876"
+          },
+          {
+            "type": "text",
+            "text": "{{VERSE_TEXT}}",
+            "size": "sm",
+            "color": "#555555",
             "wrap": true
           },
           {
-            "type": "button",
-            "style": "primary",
-            "color": "#7A1E3A",
-            "height": "sm",
-            "action": {
-              "type": "uri",
-              "label": "ฝากคำอวยพร / Blessing",
-              "uri": "https://avoltwedding.worshipnight.life/blessing/"
-            }
+            "type": "text",
+            "text": "{{VERSE_REF}}",
+            "size": "xs",
+            "weight": "bold",
+            "color": "#8FA876",
+            "align": "end"
           }
         ]
       },
