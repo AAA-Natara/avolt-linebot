@@ -302,6 +302,10 @@ function requireAdmin(req, res) {
   return true;
 }
 
+// ========== แจ้งเตือนน้ำกรุงเทพฯ (flood.js) ==========
+const { setupFlood } = require("./flood");
+const { handleFloodEvent } = setupFlood({ app, client, supabase, cron, requireAdmin });
+
 // ทดสอบส่ง verse of the day ทันที (ไม่ต้องรอเที่ยง)
 // GET /send-votd?key=xxx
 app.get("/send-votd", async (req, res) => {
@@ -397,6 +401,10 @@ const BEACON_HWID = process.env.BEACON_HWID || "00000ac97b";
 
 
 async function handleEvent(event) {
+
+  // ─── เตือนน้ำ: "เตือนน้ำ" / "หยุดเตือน" / "สถานะ" และ unfollow ───
+  const floodHandled = handleFloodEvent(event);
+  if (floodHandled) return floodHandled;
 
   // ─── BEACON EVENT ───
   // ที่บ้าน: Welcome to AVOLT Home + WiFi + ข้อพระคัมภีร์สุ่ม (วันละครั้งต่อคน)
@@ -757,7 +765,11 @@ async function handleEvent(event) {
         "- อวยพรและของขวัญ\n" +
         "- คำอวยพร\n" +
         "- ของขวัญ\n" +
-        "- การเดินทาง",
+        "- การเดินทาง\n\n" +
+        "เรื่องน้ำท่วม:\n" +
+        "- เตือนน้ำ (สมัครรับแจ้งเตือนน้ำกรุงเทพฯ)\n" +
+        "- สถานะ (ดูสถานะน้ำตอนนี้)\n" +
+        "- หยุดเตือน",
     });
   }
 
