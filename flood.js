@@ -81,6 +81,30 @@ function setupFlood({ app, client, supabase, cron, requireAdmin }) {
     }
   });
 
+  // ตรวจค่า Supabase ใน Environment โดยไม่เปิดเผยรหัส: GET /flood-diag?key=ADMIN_KEY
+  app.get("/flood-diag", (req, res) => {
+    if (!requireAdmin(req, res)) return;
+    const url = process.env.SUPABASE_URL || "";
+    const k = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+    let jwt = null;
+    if (k.startsWith("eyJ")) {
+      try {
+        const p = JSON.parse(Buffer.from(k.split(".")[1], "base64url").toString("utf8"));
+        jwt = { role: p.role, ref: p.ref, exp: p.exp ? new Date(p.exp * 1000).toISOString().slice(0, 10) : null };
+      } catch (e) {
+        jwt = "อ่านไม่ได้ (รหัสอาจไม่ครบ)";
+      }
+    }
+    res.json({
+      urlRef: (url.match(/^https:\/\/([a-z0-9]+)\.supabase\.co\/?$/) || [])[1] || `รูปแบบ URL ผิด: ${JSON.stringify(url.slice(0, 60))}`,
+      keyLength: k.length,
+      keyStartsWith: k.slice(0, 4),
+      keyHasSpaceOrNewline: /\s/.test(k),
+      keyHasQuote: /["']/.test(k),
+      jwtPayload: jwt,
+    });
+  });
+
   // ทดสอบ: GET /flood-test?key=ADMIN_KEY&to=USER_ID  (ส่งการ์ดสถานะหาคนเดียว)
   app.get("/flood-test", async (req, res) => {
     if (!requireAdmin(req, res)) return;
